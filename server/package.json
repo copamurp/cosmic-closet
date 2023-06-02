@@ -8,7 +8,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.mjs",
     "dev": "nodemon server.mjs",
-    "build": "npm install && cd ../client && npm install && npm run build && cd ../server && npm install && npm run start"
+    "build": "npm install && cd ../client && npm install && npm run build && cd ../server && npm install && npm run start",
+    "prod": "npm install && cd ../client && npm install && npm run build && cd ../server && npm install"
   },
   "keywords": [],
   "author": "Connor Murphy",
