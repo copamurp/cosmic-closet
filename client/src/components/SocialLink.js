@@ -13,7 +13,7 @@ const StyledSocial = styled(FontAwesomeIcon)`
 const SocialLink = ({link, icon, color, size}) => {
 	return (
 		<a href={link} target="_blank" rel="noreferrer">
-			<StyledSocial icon={icon} style={{color: color}} size={size}/>
+			<StyledSocial icon={icon} style={{color: color}} size={size} />
 		</a>
 	)
 }
