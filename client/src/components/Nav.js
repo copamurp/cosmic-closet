@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import {NavLink} from "react-router-dom";
-import {icon} from '@fortawesome/fontawesome-svg-core/import.macro'
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {icon} from '@fortawesome/fontawesome-svg-core/import.macro';
 import SocialLink from "./SocialLink";
 
 const NavWrapper = styled.nav`
@@ -17,7 +16,8 @@ const NavWrapper = styled.nav`
   .header {
 	width: 100%;
 	display: flex;
-	align-items: stretch;
+    flex-direction: column;
+	align-items: center;
 	justify-content: center;
     
     @media only screen and (max-width: 768px) {
@@ -26,14 +26,19 @@ const NavWrapper = styled.nav`
 	}
 
 	.header-banner {
-	  max-height: 192px;
-	  width: auto;
+	  max-width: 40%;
+	  height: auto;
+	  margin-top: 2rem;
+	  
+	  @media only screen and (max-width: 768px) {
+	    max-width: 80%;
+	  }
 	}
 
 	.header-text {
 	  display: flex;
 	  flex-direction: column;
-	  align-items: flex-start;
+	  align-items: center;
 	  justify-content: center;
 	  
 	  @media only screen and (max-width: 768px) {
@@ -151,11 +156,10 @@ const Nav = () => {
 	return (
 		<NavWrapper>
 			<div className={'header'}>
-				<img className={'header-banner'} src={require('../assets/images/nav-header-logo.webp')} alt={'The' +
+				<img className={'header-banner'} src={require('../assets/images/banner.png')} alt={'The' +
 					' Cosmic Closet Podcast' +
 					' Banner'}/>
 				<div className={'header-text'}>
-					<h2 className={'title'}>The Cosmic Closet Podcast</h2>
 					<h3 className={'mission-statement'}>The home of news that wants to, needs to, and will be
 						discussed.</h3>
 				</div>
