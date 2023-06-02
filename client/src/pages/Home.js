@@ -9,6 +9,7 @@ import {useEffect, useState} from "react";
 import Testimonial from "../components/Testimonial";
 import Loading from "../components/Loading";
 import ExternalMediaWrapper from "../components/ExternalMediaWrapper";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 const StyledHome = styled.div`
   .intro {
@@ -62,7 +63,7 @@ const StyledHome = styled.div`
 
 	  h2 {
 		text-align: center;
-		color: #8F81C2;
+		color: #5B5AA8;
 		font-size: 2rem;
 		font-size: clamp(2rem, 1.8rem + 0.75vw, 3rem);
 		font-weight: 600;
@@ -107,7 +108,7 @@ const StyledHome = styled.div`
 	  .media {
 		border-radius: 1rem;
 		background-color: rgba(67, 67, 67, 0.4);
-		box-shadow: 0 0 4px 1px #8f81c2;
+		box-shadow: 0 0 4px 1px #ffffff;
 		padding: 1rem;
 	  }
 
@@ -115,13 +116,13 @@ const StyledHome = styled.div`
 		width: 100%;
 		text-align: center;
 		border-radius: 0.5rem;
-		color: #8F81C2;
+		color: #ffffff;
 		font-size: 1.5rem;
 		font-size: clamp(1.5rem, 1.35rem + 0.75vw, 2.25rem);
 		margin-bottom: 1rem;
 		padding: 1rem;
-		background-color: rgba(5, 5, 5, 0.5);
-		box-shadow: 0 0 2px 1px #8f81c2;
+		background-color: rgba(0, 0, 0, 0);
+		box-shadow: 0 0 2px 1px #ffffff;
 	  }
 
 	  .video-wrapper {
@@ -143,7 +144,7 @@ const StyledHome = styled.div`
   }
 
   .testimonials {
-	background: #8F81C2;
+	background: #5B5AA8;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -171,8 +172,34 @@ const StyledHome = styled.div`
 const Home = () => {
 	const {height, width} = useWindowSize();
 	const [feedWidth, setFeedWidth] = useState(0);
+	const [feedHeight] = useState('400px');
 	const [tweetsLoading, setTweetsLoading] = useState(true);
 	const [tweetTimeline, setTweetTimeline] = useState(null);
+	const [testimonials, setTestimonials] = useState([]);
+
+	useEffect(() => {
+		const loadTestimonials = async () => {
+			const controller = new AbortController();
+			fetch("/api/testimonials", {signal: controller.signal,})
+				.then(res => res.json())
+				.then(data => {
+					setTestimonials(
+						data.map(testimonial => {
+							return <Testimonial
+								_name={testimonial.name}
+								_quote={testimonial.quote}
+								_rating={testimonial.rating}
+								_date={testimonial.date}
+							/>
+						})
+					)
+				})
+		}
+
+		loadTestimonials().then(() => {
+			console.log('testimonials loaded')
+		});
+	}, []);
 
 	useEffect(() => {
 		const handleResize = async () => {
@@ -195,14 +222,26 @@ const Home = () => {
 			setTweetTimeline(
 				<Timeline
 					renderError={_err => {
-						return <div style={{color: 'white'}}>Failed to fetch tweets.</div>;
+						return (
+							<div
+								style={{
+									color: 'white', display: 'flex',
+									flexDirection: 'column', alignItems: 'center', justifyContent: 'space-evenly',
+									textAlign: 'center', width: feedWidth, height: feedHeight, fontSize: '2rem'
+								}}
+							>
+								<FontAwesomeIcon icon={icon({name: 'robot', style: 'regular', family: 'sharp'})}
+								                 size={'2x'}/>
+								get tweets failed :(
+							</div>
+						)
 					}}
 					dataSource={{
 						sourceType: 'profile',
 						screenName: 'Cosmic_Closet'
 					}}
 					options={{
-						height: '400px',
+						height: feedHeight,
 						width: feedWidth,
 						theme: 'dark'
 					}}
@@ -215,10 +254,6 @@ const Home = () => {
 		});
 	}, [feedWidth]);
 
-	let testimonials = [
-		<Testimonial/>
-	];
-
 	return (
 		<StyledHome>
 			<div className={'intro'}>
@@ -226,7 +261,7 @@ const Home = () => {
 					<YouTube
 						videoId="24eohEB4Saw"
 						opts={{
-							height: '400px',
+							height: feedHeight,
 							width: '100%',
 						}}
 						style={{
@@ -265,16 +300,15 @@ const Home = () => {
 				</div>
 
 				<div className={'feed-wrapper'}>
-					<div className={'media twitter-wrapper'}>
+					<ExternalMediaWrapper label={'Follow Our Twitter'} isBanner={true}>
 						{tweetsLoading ?
-							<Loading style={{width: feedWidth}} />
+							<Loading style={{width: feedWidth, height: feedHeight}}/>
 							:
 							<>
-								<h3 className={'media-label'}>Follow Our Twitter</h3>
 								{tweetTimeline}
 							</>
 						}
-					</div>
+					</ExternalMediaWrapper>
 				</div>
 			</div>
 

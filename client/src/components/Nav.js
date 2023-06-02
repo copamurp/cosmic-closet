@@ -160,8 +160,8 @@ const Nav = () => {
 					' Cosmic Closet Podcast' +
 					' Banner'}/>
 				<div className={'header-text'}>
-					<h3 className={'mission-statement'}>The home of news that wants to, needs to, and will be
-						discussed.</h3>
+					<h3 className={'mission-statement'}>Unlock mysteries from the Unseen Realms to Infinite Frontiers -
+						this is the Cosmic Closet Podcast!</h3>
 				</div>
 			</div>
 			<hr/>
