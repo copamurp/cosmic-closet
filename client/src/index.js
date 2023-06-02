@@ -13,10 +13,12 @@ import Nav from "./components/Nav";
 import {CSSTransition, SwitchTransition} from "react-transition-group";
 import About from "./pages/About";
 import Footer from "./components/Footer";
+import Contact from "./pages/Contact";
 
 const routes = [
 	{path: '/', element: <Home/>},
 	{path: '/about', element: <About/>},
+	{path: '/contact', element: <Contact />}
 ]
 
 const router = createBrowserRouter([
