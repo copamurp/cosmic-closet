@@ -88,6 +88,10 @@ const NavWrapper = styled.nav`
 	  align-items: center;
 	  justify-content: space-evenly;
 	  list-style: none;
+	  
+	  @media only screen and (max-width: 768px) {
+	    flex-basis: 60%;
+	  }
 	}
 
 	.social-list {
