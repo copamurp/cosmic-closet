@@ -7,6 +7,7 @@ import SocialLink from "../components/SocialLink";
 import useWindowSize from "../hooks/useWindowSize";
 import {useEffect, useState} from "react";
 import Testimonial from "../components/Testimonial";
+import Loading from "../components/Loading";
 
 const StyledHome = styled.div`
   .intro {
@@ -64,7 +65,7 @@ const StyledHome = styled.div`
 		font-size: 2rem;
 		font-size: clamp(2rem, 1.8rem + 0.75vw, 3rem);
 		font-weight: 600;
-		margin-bottom: 2rem;
+		margin-bottom: 1rem;
 	  }
 
 	  p {
@@ -72,7 +73,7 @@ const StyledHome = styled.div`
 		font-size: 1.25rem;
 		font-weight: 200;
 		line-height: 1.5;
-		margin: 0 1rem;
+		text-align: center;
 	  }
 	}
 
@@ -81,11 +82,11 @@ const StyledHome = styled.div`
 	  align-items: center;
 	  justify-content: space-evenly;
 	  width: 75%;
-	  margin: 2rem 0;
+	  margin-bottom: 2rem;
 
 	  @media only screen and (max-width: 768px) {
 		width: 100%;
-	    margin-bottom: 6rem;
+		margin-bottom: 6rem;
 	  }
 	}
 
@@ -102,18 +103,27 @@ const StyledHome = styled.div`
 		justify-content: center;
 	  }
 
-	  h3 {
+	  .media {
+		border-radius: 1rem;
+		background-color: rgba(67, 67, 67, 0.4);
+		box-shadow: 0 0 4px 1px #8f81c2;
+		padding: 1rem;
+	  }
+
+	  .media-label {
+		width: 100%;
+		text-align: center;
+		border-radius: 0.5rem;
 		color: #8F81C2;
 		font-size: 1.5rem;
 		font-size: clamp(1.5rem, 1.35rem + 0.75vw, 2.25rem);
-	    
-	    		@media only screen and (max-width: 1100px) {
-			      		  margin-bottom: 1.5rem;
-				}
+		margin-bottom: 1rem;
+		padding: 1rem;
+		background-color: rgba(5, 5, 5, 0.5);
+		box-shadow: 0 0 2px 1px #8f81c2;
 	  }
 
 	  .video-wrapper {
-		flex: 1;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -124,7 +134,6 @@ const StyledHome = styled.div`
 	  }
 
 	  .twitter-wrapper {
-		flex: 1;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -163,22 +172,48 @@ const Home = () => {
 	const {height, width} = useWindowSize();
 	const [feedWidth, setFeedWidth] = useState(0);
 	const [tweetsLoading, setTweetsLoading] = useState(true);
+	const [tweetTimeline, setTweetTimeline] = useState(null);
 
 	useEffect(() => {
-		function handleResize() {
+		const handleResize = async () => {
 			if (width < 500) {
-				return 350;
+				setFeedWidth(350);
 			} else if (width < 768) {
-				return 400;
+				setFeedWidth(400);
 			} else if (width < 1200) {
-				return 500;
+				setFeedWidth(450);
 			} else {
-				return 600;
+				setFeedWidth(500);
 			}
 		}
 
-		setFeedWidth(handleResize());
+		handleResize();
 	}, [width]);
+	
+	useEffect(() => {
+		const loadTimeline = async () => {
+			setTweetTimeline(
+				<Timeline
+					renderError={_err => {
+						return <div style={{color: 'white'}}>Failed to fetch tweets.</div>;
+					}}
+					dataSource={{
+						sourceType: 'profile',
+						screenName: 'Cosmic_Closet'
+					}}
+					options={{
+						height: '400px',
+						width: feedWidth,
+						theme: 'dark'
+					}}
+				/>
+			);
+		}
+
+		loadTimeline().then(() => {
+			setTweetsLoading(false);
+		});
+	}, [feedWidth]);
 
 	let testimonials = [
 		<Testimonial/>
@@ -221,8 +256,8 @@ const Home = () => {
 				</div>
 
 				<div className={'feed-wrapper'}>
-					<div className={'video-wrapper'}>
-						<h3>Latest Episode</h3>
+					<div className={'media video-wrapper'}>
+						<h3 className={'media-label'}>Latest Episode</h3>
 						<YouTube
 							videoId="24eohEB4Saw"
 							opts={{
@@ -235,23 +270,15 @@ const Home = () => {
 						/>
 					</div>
 
-					<div className={'twitter-wrapper'}>
-						<h3>Follow Our Twitter</h3>
-						<Timeline
-							renderError={_err => {
-								return <div style={{color: 'white'}}>Failed to fetch tweets.</div>;
-							}}
-							dataSource={{
-								sourceType: 'profile',
-								screenName: 'Cosmic_Closet'
-							}}
-							options={{
-								height: '400px',
-								width: feedWidth,
-								theme: 'dark'
-							}}
-							onLoad={() => setTweetsLoading(false)}
-						/>
+					<div className={'media twitter-wrapper'}>
+						{tweetsLoading ?
+							<Loading style={{width: feedWidth}} />
+							:
+							<>
+								<h3 className={'media-label'}>Follow Our Twitter</h3>
+								{tweetTimeline}
+							</>
+						}
 					</div>
 				</div>
 			</div>
