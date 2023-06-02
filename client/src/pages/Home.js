@@ -1,25 +1,26 @@
 import styled from "styled-components";
 import YouTube from "react-youtube";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {icon} from "@fortawesome/fontawesome-svg-core/import.macro";
 import {Timeline} from 'react-twitter-widgets'
 import Carousel from "../components/Carousel";
 import SocialLink from "../components/SocialLink";
 import useWindowSize from "../hooks/useWindowSize";
+import {useEffect, useState} from "react";
+import Testimonial from "../components/Testimonial";
 
 const StyledHome = styled.div`
   .intro {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	width: 100vw;
-	padding: 4rem 0;
+	width: 100%;
+	padding: 2rem 0;
 	border-bottom: 2px solid #ffffff;
 	background: radial-gradient(ellipse at center, #0b0b0b 10vw, #0e0e0e 100vw);
 
 	.header-banner {
-	  width: 100vw;
-	  max-width: 800px;
+	  width: 100%;
+	  max-width: 600px;
 	  margin: 0 auto;
 	}
 
@@ -28,17 +29,17 @@ const StyledHome = styled.div`
 	  font-size: 2rem;
 	  font-size: clamp(2rem, 1.8rem + 0.75vw, 3rem);
 	  font-weight: 600;
-	  text-shadow: 0 0 2px #ffffff;
-	  
+
 	  @media only screen and (max-width: 768px) {
-	    font-size: 1.5rem;
-        font-size: clamp(1.5rem, 1.35rem + 0.75vw, 2.25rem);
-	    text-align: center;
+		font-size: 1.5rem;
+		font-size: clamp(1.5rem, 1.35rem + 0.75vw, 2.25rem);
+		text-align: center;
 	  }
 	}
   }
 
   .content {
+	min-height: 90vh;
 	background-image: url(${require("../assets/images/home/galaxy.jpg")});
 	background-size: cover;
 	background-position: center;
@@ -46,8 +47,9 @@ const StyledHome = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	width: 100vw;
-	padding: 4rem 0;
+	justify-content: space-evenly;
+	width: 100%;
+	padding: 2rem 0;
 	border-bottom: 2px solid #ffffff;
 
 	.socials-intro {
@@ -55,16 +57,16 @@ const StyledHome = styled.div`
 	  flex-direction: column;
 	  align-items: center;
 	  justify-content: center;
-	  width: 80vw;
+	  width: 80%;
 	  margin-bottom: 4rem;
 
 	  h2 {
-	    text-align: center;
+		text-align: center;
 		color: #8F81C2;
 		font-size: 2rem;
 		font-size: clamp(2rem, 1.8rem + 0.75vw, 3rem);
 		font-weight: 600;
-		text-shadow: 0 0 2px #aa99e6;
+		margin-bottom: 2rem;
 	  }
 
 	  p {
@@ -72,8 +74,7 @@ const StyledHome = styled.div`
 		font-size: 1.25rem;
 		font-weight: 200;
 		line-height: 1.5;
-		margin: 0 2rem;
-		text-shadow: 0 0 4px #000000, 2px 2px 4px #000000;
+		margin: 0 1rem;
 	  }
 	}
 
@@ -81,80 +82,102 @@ const StyledHome = styled.div`
 	  display: flex;
 	  align-items: center;
 	  justify-content: space-evenly;
-	  width: 75vw;
-	  margin: 4rem 0;
-	  
+	  width: 75%;
+	  margin: 2rem 0;
+
 	  @media only screen and (max-width: 768px) {
-	    width: 100vw;
+		width: 100%;
 	  }
 	}
 
 	.feed-wrapper {
-	  width: 100vw;
+	  width: 100%;
 	  max-width: 1800px;
-	  min-height: 50vh;
 	  display: flex;
 	  align-items: stretch;
 	  justify-content: space-evenly;
-	  
-	  @media only screen and (max-width: 1200px) {
-	    flex-direction: column;
-	    align-items: center;
-	    justify-content: center;
+
+	  @media only screen and (max-width: 1100px) {
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
 	  }
 
 	  h3 {
 		color: #8F81C2;
 		font-size: 1.5rem;
 		font-size: clamp(1.5rem, 1.35rem + 0.75vw, 2.25rem);
-		text-shadow: 0 0 2px #aa99e6;
 	  }
 
 	  .video-wrapper {
+		flex: 1;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+
+		@media only screen and (max-width: 1100px) {
+		  margin-bottom: 2rem;
+		}
 	  }
 
 	  .twitter-wrapper {
+		flex: 1;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 	  }
 	}
   }
-  
+
   .testimonials {
-    	background: #8F81C2;
-    	display: flex;
-    	flex-direction: column;
-    	align-items: center;
-    	width: 100vw;
-    	padding: 4rem 0;
-    	border-bottom: 2px solid #ffffff;
+	position: relative;
+	background: #8F81C2;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
+	width: 100%;
+	height: 50vh;
+	padding: 4rem 0;
+	border-bottom: 2px solid #ffffff;
 
 	h2 {
 	  font-size: 2rem;
 	  font-size: clamp(2rem, 1.8rem + 0.75vw, 3rem);
 	  font-weight: 600;
-	  text-shadow: 0 0 2px white;
 	  justify-self: flex-start;
 	}
-    
-    .carousel-wrapper {
-      width: 100vw;
-      max-width: 1800px;
-      min-height: 50vh;
-      display: flex;
-      align-items: stretch;
-      justify-content: space-evenly;
-      flex-wrap: wrap;
+
+	.carousel-wrapper {
+	  width: 100vw;
+	  max-width: 1800px;
+	  min-height: 50vh;
 	}
   }
 `;
 
 const Home = () => {
 	const {height, width} = useWindowSize();
+	const [feedWidth, setFeedWidth] = useState(0);
+	const [tweetsLoading, setTweetsLoading] = useState(true);
+
+	useEffect(() => {
+		function handleResize() {
+			if (width < 768) {
+				return 400;
+			} else if (width < 1200) {
+				return 500;
+			} else {
+				return 600;
+			}
+		}
+
+		setFeedWidth(handleResize());
+	}, [width]);
+
+	let testimonials = [
+		<Testimonial/>
+	];
 
 	return (
 		<StyledHome>
@@ -195,56 +218,35 @@ const Home = () => {
 				<div className={'feed-wrapper'}>
 					<div className={'video-wrapper'}>
 						<h3>Latest Episode</h3>
-						{width < 768 ?
-							<YouTube
-								videoId="24eohEB4Saw"
-								opts={{
-									width: '400px',
-									height: '350px'
-								}}
-								style={{
-									width: '400px'
-								}}
-							/>
-							:
-							<YouTube
-								videoId="24eohEB4Saw"
-								opts={{
-									width: '600px',
-									height: '400px'
-								}}
-								style={{
-									width: '600px'
-								}}
-							/>
-						}
+						<YouTube
+							videoId="24eohEB4Saw"
+							opts={{
+								height: '400px',
+								width: '100%',
+							}}
+							style={{
+								width: feedWidth
+							}}
+						/>
 					</div>
 
 					<div className={'twitter-wrapper'}>
 						<h3>Follow Our Twitter</h3>
-						{width < 768 ?
-							<Timeline
-								dataSource={{
-									sourceType: 'profile',
-									screenName: 'Cosmic_Closet'
-								}}
-								options={{
-									height: '350px',
-									width: '400px',
-									theme: 'dark'
-								}}
-							/>
-							:
-							<Timeline
-								dataSource={{
-									sourceType: 'profile',
-									screenName: 'Cosmic_Closet'
-								}} options={{
+						<Timeline
+							renderError={_err => {
+								return <div style={{color: 'white'}}>Failed to fetch tweets.</div>;
+							}}
+							dataSource={{
+								sourceType: 'profile',
+								screenName: 'Cosmic_Closet'
+							}}
+							options={{
 								height: '400px',
-								width: '600px',
+								width: feedWidth,
 								theme: 'dark'
-							}}/>
-						}
+							}}
+							onLoad={() => setTweetsLoading(false)}
+						/>
 					</div>
 				</div>
 			</div>
@@ -252,7 +254,7 @@ const Home = () => {
 			<div className={'testimonials'}>
 				<h2>Testimonials</h2>
 				<div className={'testimonials-wrapper'}>
-					<Carousel />
+					<Carousel children={testimonials}/>
 				</div>
 			</div>
 		</StyledHome>
