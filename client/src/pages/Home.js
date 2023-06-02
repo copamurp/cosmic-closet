@@ -31,8 +31,6 @@ const StyledHome = styled.div`
 	  font-weight: 600;
 
 	  @media only screen and (max-width: 768px) {
-		font-size: 1.5rem;
-		font-size: clamp(1.5rem, 1.35rem + 0.75vw, 2.25rem);
 		text-align: center;
 	  }
 	}
@@ -87,6 +85,7 @@ const StyledHome = styled.div`
 
 	  @media only screen and (max-width: 768px) {
 		width: 100%;
+	    margin-bottom: 6rem;
 	  }
 	}
 
@@ -107,6 +106,10 @@ const StyledHome = styled.div`
 		color: #8F81C2;
 		font-size: 1.5rem;
 		font-size: clamp(1.5rem, 1.35rem + 0.75vw, 2.25rem);
+	    
+	    		@media only screen and (max-width: 1100px) {
+			      		  margin-bottom: 1.5rem;
+				}
 	  }
 
 	  .video-wrapper {
@@ -163,7 +166,9 @@ const Home = () => {
 
 	useEffect(() => {
 		function handleResize() {
-			if (width < 768) {
+			if (width < 500) {
+				return 350;
+			} else if (width < 768) {
 				return 400;
 			} else if (width < 1200) {
 				return 500;
@@ -202,16 +207,16 @@ const Home = () => {
 
 				<div className={'socials-big'}>
 					<SocialLink icon={icon({name: 'youtube', style: 'brands'})}
-					            link={'https://twitter.com/cosmic_closet?lang=en'} size={'4x'} color={'#FF0000'}
+					            link={'https://www.youtube.com/@CosmicCloset'} size={'4x'} color={'#FF0000'}
 					/>
 					<SocialLink icon={icon({name: 'twitter', style: 'brands'})}
 					            link={'https://twitter.com/cosmic_closet?lang=en'} size={'4x'} color={'#1DA1F2'}
 					/>
 					<SocialLink icon={icon({name: 'instagram', style: 'brands'})}
-					            link={'https://twitter.com/cosmic_closet?lang=en'} size={'4x'} color={'white'}
+					            link={'https://www.instagram.com/cosmicclosetpodcast/?hl=en'} size={'4x'} color={'white'}
 					/>
 					<SocialLink icon={icon({name: 'podcast', style: 'regular', family: 'sharp'})}
-					            link={'https://twitter.com/cosmic_closet?lang=en'} size={'4x'} color={'#833AB4'}
+					            link={'https://podcasts.apple.com/us/podcast/cosmic-closet-podcast/id1465437814?ign-mpt=uo%3D4'} size={'4x'} color={'#833AB4'}
 					/>
 				</div>
 
