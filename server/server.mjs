@@ -24,6 +24,8 @@ app.use(express.static(path.join(__dirname, "../client/build")));
 app.use(express.static("public"));
 
 app.use((req, res, next) => {
+	console.log(req);
+
 	res.sendFile(path.join(__dirname, "../client/build", 'index.html'));
 });
 
@@ -33,5 +35,5 @@ app.listen(PORT, () => {
 		if (err) console.error(err);
 	});
 
-	console.log(`Example app listening at http://localhost:${PORT}`);
+	console.log(`Cosmic Closet listening at http://localhost:${PORT}`);
 });
