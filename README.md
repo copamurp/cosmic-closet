@@ -1,2 +1,2 @@
 # Cosmic Closet
-## Web application for podcast
+Node/React web application for a podcast.
