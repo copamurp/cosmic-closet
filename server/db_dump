@@ -1,0 +1,7 @@
+db.testimonials.insert(
+    [
+        {name: "Psychic Maria" , quote: "Hey guys this is psychic medium Maria Frances. You interviewed me and then Rev
+        LJ and then both of us together. I am happy to announce he has joined our team. If it were not for you guys I
+        wouldn't have found him! Keep up the great work!!", rating: 5, date: "4 years ago"}
+    ]
+)
