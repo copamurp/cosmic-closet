@@ -8,6 +8,7 @@ import useWindowSize from "../hooks/useWindowSize";
 import {useEffect, useState} from "react";
 import Testimonial from "../components/Testimonial";
 import Loading from "../components/Loading";
+import ExternalMediaWrapper from "../components/ExternalMediaWrapper";
 
 const StyledHome = styled.div`
   .intro {
@@ -15,7 +16,7 @@ const StyledHome = styled.div`
 	flex-direction: column;
 	align-items: center;
 	width: 100%;
-	padding: 2rem 0;
+	padding: 4rem 0;
 	border-bottom: 2px solid #ffffff;
 	background: radial-gradient(ellipse at center, #0b0b0b 10vw, #0e0e0e 100vw);
 
@@ -142,7 +143,6 @@ const StyledHome = styled.div`
   }
 
   .testimonials {
-	position: relative;
 	background: #8F81C2;
 	display: flex;
 	flex-direction: column;
@@ -181,9 +181,9 @@ const Home = () => {
 			} else if (width < 768) {
 				setFeedWidth(400);
 			} else if (width < 1200) {
-				setFeedWidth(450);
+				setFeedWidth(650);
 			} else {
-				setFeedWidth(500);
+				setFeedWidth(750);
 			}
 		}
 
@@ -222,9 +222,18 @@ const Home = () => {
 	return (
 		<StyledHome>
 			<div className={'intro'}>
-				<img className={'header-banner'} src={require("../assets/images/nav-header-logo.webp")}
-				     alt="Cosmic Closet Podcast Banner"/>
-				<h1>Welcome to the Cosmic Closet Podcast</h1>
+				<ExternalMediaWrapper label={'Latest Episode'} isBanner={true}>
+					<YouTube
+						videoId="24eohEB4Saw"
+						opts={{
+							height: '400px',
+							width: '100%',
+						}}
+						style={{
+							width: feedWidth
+						}}
+					/>
+				</ExternalMediaWrapper>
 			</div>
 
 			<div className={'content'}>
@@ -256,20 +265,6 @@ const Home = () => {
 				</div>
 
 				<div className={'feed-wrapper'}>
-					<div className={'media video-wrapper'}>
-						<h3 className={'media-label'}>Latest Episode</h3>
-						<YouTube
-							videoId="24eohEB4Saw"
-							opts={{
-								height: '400px',
-								width: '100%',
-							}}
-							style={{
-								width: feedWidth
-							}}
-						/>
-					</div>
-
 					<div className={'media twitter-wrapper'}>
 						{tweetsLoading ?
 							<Loading style={{width: feedWidth}} />
