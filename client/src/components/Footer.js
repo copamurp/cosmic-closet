@@ -8,7 +8,6 @@ const StyledFooter = styled.footer`
   text-align: center;
   font-size: 1rem;
   font-weight: 200;
-  display: flex;
   
   .wrapper {
     width: 100%;
@@ -17,6 +16,14 @@ const StyledFooter = styled.footer`
     align-items: center;
     justify-content: space-between;
     margin: 0 auto;
+    
+    .copyright {
+      flex-basis: 30%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+    }
   }
   
   .links {
