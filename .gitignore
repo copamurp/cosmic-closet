@@ -3,3 +3,5 @@
 */dist/*
 */build/*
 *.env
+/.idea/jsLibraryMappings.xml
+/.idea/codeStyles/codeStyleConfig.xml
