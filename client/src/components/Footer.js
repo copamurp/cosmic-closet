@@ -25,6 +25,10 @@ const StyledFooter = styled.footer`
 	  color: #a5a5a5;
 	  transform: scale(1.1);
 	}
+
+	:not(:last-child) {
+	  margin-bottom: 1rem;
+	}
   }
 
   .link-wrapper {
@@ -78,6 +82,7 @@ const StyledFooter = styled.footer`
 
 		@media only screen and (max-width: 768px) {
 		  max-height: 20px;
+		  margin-right: 0;
 		}
 	  }
 	}
@@ -114,9 +119,12 @@ const Footer = () => {
 				</div>
 
 				<div className={'social-links'}>
-					<button>Spotify</button>
-					<button>YouTube</button>
-					<button>Twitter</button>
+					<a href={'https://open.spotify.com/show/7s2ljVGvKi30OZ3uR6zWKE'} target={'_blank'}
+					   rel="noreferrer">Spotify</a>
+					<a href={'https://www.youtube.com/@CosmicCloset'} target={'_blank'}
+					   rel="noreferrer">YouTube</a>
+					<a href={'https://twitter.com/cosmic_closet?lang=en'} target={'_blank'}
+					   rel="noreferrer">Twitter</a>
 				</div>
 			</div>
 
