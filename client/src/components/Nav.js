@@ -187,16 +187,18 @@ const Nav = () => {
 
 					<div className={'other-badges'}>
 						<SocialLink icon={icon({name: 'youtube', style: 'brands'})}
-						            link={'https://twitter.com/cosmic_closet?lang=en'} size={'xl'} color={'#FF0000'}
+						            link={'https://www.youtube.com/@CosmicCloset'} size={'xl'} color={'#FF0000'}
 						/>
 						<SocialLink icon={icon({name: 'twitter', style: 'brands'})}
 						            link={'https://twitter.com/cosmic_closet?lang=en'} size={'xl'} color={'#1DA1F2'}
 						/>
 						<SocialLink icon={icon({name: 'instagram', style: 'brands'})}
-						            link={'https://twitter.com/cosmic_closet?lang=en'} size={'xl'} color={'white'}
+						            link={'https://www.instagram.com/cosmicclosetpodcast/?hl=en'} size={'xl'}
+						            color={'white'}
 						/>
 						<SocialLink icon={icon({name: 'podcast', style: 'regular', family: 'sharp'})}
-						            link={'https://twitter.com/cosmic_closet?lang=en'} size={'xl'} color={'#833AB4'}
+						            link={'https://podcasts.apple.com/us/podcast/cosmic-closet-podcast/id1465437814?ign-mpt=uo%3D4'}
+						            size={'xl'} color={'#833AB4'}
 						/>
 					</div>
 				</ul>
