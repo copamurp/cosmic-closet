@@ -12,16 +12,17 @@ const NavWrapper = styled.nav`
   align-items: center;
   justify-content: center;
   margin: 0 auto;
+  background: radial-gradient(ellipse at top left, #1a1a1a 10%, #0e0e0e 55%);
 
   .header {
 	width: 100%;
 	display: flex;
-    flex-direction: column;
+	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-    
-    @media only screen and (max-width: 768px) {
-      flex-direction: column;
+
+	@media only screen and (max-width: 768px) {
+	  flex-direction: column;
 	  align-items: center;
 	}
 

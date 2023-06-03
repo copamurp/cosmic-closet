@@ -6,15 +6,12 @@ const StyledFooter = styled.footer`
   height: 100%;
   max-width: 1800px;
   display: flex;
-  align-items: stretch;
+  flex-direction: column;
+  align-items: center;
   justify-content: space-between;
   margin: 0 auto;
   padding: 2rem;
-  min-height: 20vh;
-
-  @media only screen and (max-width: 768px) {
-	display: block;
-  }
+  background: radial-gradient(ellipse at bottom right, #1a1a1a 0, #0e0e0e 35%);
 
   button, p, a {
 	font-size: 1rem;
@@ -30,27 +27,38 @@ const StyledFooter = styled.footer`
 	}
   }
 
-  .center-wrap {
-	flex: 1;
+  .link-wrapper {
+	width: 100%;
+	flex-basis: 90%;
 	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: space-evenly;
+	margin-bottom: 2rem;
 
-	@media only screen and (max-width: 768px) {
-	  position: absolute;
-	  left: 50%;
-	  transform: translateX(-50%);
-	}
+	> div {
+	  display: flex;
+	  align-items: center;
+	  justify-content: space-evenly;
+	  margin: 0 auto;
+	  width: 40%;
 
-	p {
 	  @media only screen and (max-width: 768px) {
-		font-size: 0.8rem;
-		font-weight: 400;
+		display: flex;
+		flex-direction: column;
+
+		:nth-child(even) {
+		  align-items: flex-end;
+		}
+
+		:nth-child(odd) {
+		  align-items: flex-start;
+		}
 	  }
 	}
+  }
 
-	.meta {
+  .meta {
+	flex-basis: 10%;
+
+	.cosmic-closet {
 	  display: flex;
 	  align-items: center;
 	  justify-content: space-evenly;
@@ -75,37 +83,6 @@ const StyledFooter = styled.footer`
 	}
   }
 
-  .links {
-	flex-basis: 35%;
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	justify-content: center;
-	padding-left: 10vw;
-
-	@media only screen and (max-width: 768px) {
-	  float: left;
-	  flex: 1;
-	  align-items: stretch;
-	  justify-content: space-between;
-	  padding-left: 0;
-	}
-  }
-
-  .socials {
-	flex-basis: 35%;
-	display: flex;
-	flex-direction: column;
-	align-items: flex-end;
-	justify-content: center;
-	padding-right: 10vw;
-
-	@media only screen and (max-width: 768px) {
-	  float: right;
-	  padding-right: 0;
-	}
-  }
-
   button {
 	background: none;
 	border: none;
@@ -116,7 +93,7 @@ const StyledFooter = styled.footer`
 	transition: color 0.2s ease-in-out;
 
 	&:hover {
-      color: #a5a5a5;
+	  color: #a5a5a5;
 	}
   }
 `;
@@ -124,30 +101,33 @@ const StyledFooter = styled.footer`
 const Footer = () => {
 	return (
 		<StyledFooter>
-			<div className={'links'}>
-				<button
-					onClick={() => {
-						window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
-					}}
-				>Scroll To Top
-				</button>
-				<NavLink to={'/about'}>About</NavLink>
-				<NavLink to={'/contact'}>Contact Us</NavLink>
+			<div className={'link-wrapper'}>
+				<div className={'site-links'}>
+					<button
+						onClick={() => {
+							window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
+						}}
+					>Scroll To Top
+					</button>
+					<NavLink to={'/about'}>About</NavLink>
+					<NavLink to={'/contact'}>Contact Us</NavLink>
+				</div>
+
+				<div className={'social-links'}>
+					<button>Spotify</button>
+					<button>YouTube</button>
+					<button>Twitter</button>
+				</div>
 			</div>
 
-			<div className={'center-wrap'}>
-				<div className={'meta'}>
+
+			<div className={'meta'}>
+				<div className={'cosmic-closet'}>
 					<img src={require('../assets/images/logo.png')} alt={'The Cosmic Closet Podcast logo.'}/>
 					<p>The Cosmic Closet Podcast</p>
 				</div>
 
 				<p>contactcosmiccloset@gmail.com</p>
-			</div>
-
-			<div className={'socials'}>
-				<button>Social 1</button>
-				<button>Social 2</button>
-				<button>Social 3</button>
 			</div>
 		</StyledFooter>
 	)

@@ -10,6 +10,7 @@ import Testimonial from "../components/Testimonial";
 import Loading from "../components/Loading";
 import ExternalMediaWrapper from "../components/ExternalMediaWrapper";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import getRandomError from "../helper/getRandomError";
 
 const StyledHome = styled.div`
   .intro {
@@ -19,17 +20,13 @@ const StyledHome = styled.div`
 	width: 100%;
 	padding: 4rem 0;
 	border-bottom: 2px solid #ffffff;
-	background: radial-gradient(ellipse at center, #0b0b0b 10vw, #0e0e0e 100vw);
 
 	h1 {
+	  text-align: center;
 	  color: #ffffff;
 	  font-size: 2rem;
 	  font-size: clamp(2rem, 1.8rem + 0.75vw, 3rem);
 	  font-weight: 600;
-
-	  @media only screen and (max-width: 768px) {
-		text-align: center;
-	  }
 	}
   }
 
@@ -138,7 +135,7 @@ const StyledHome = styled.div`
   }
 
   .testimonials {
-	background: radial-gradient(circle at bottom, #5B5AA8 0, #6f6ecc 100%);
+	background: radial-gradient(ellipse at bottom, #5B5AA8 25%, #4f4ddf 100%);
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -258,6 +255,8 @@ const Home = () => {
 		});
 	}, [feedWidth]);
 
+	let randomError = getRandomError();
+
 	return (
 		<StyledHome>
 			<div className={'intro'}>
@@ -351,7 +350,7 @@ const Home = () => {
 										borderRadius: '0.25rem',
 										boxShadow: '0 0 3px 1px rgba(7,7,7,0.8)'
 									}}>
-										<p style={{fontSize: '1rem'}}>error</p>
+										<p style={{fontSize: '1rem'}}>error {randomError.code}</p>
 										<p style={{
 											fontSize: '1rem',
 											height: '90%',
@@ -360,8 +359,11 @@ const Home = () => {
 											justifyContent: 'center',
 											backgroundColor: 'rgba(0,0,0,0.4)',
 											borderRadius: '0.25rem',
-											boxShadow: '0 0 1px 1px rgba(7,7,7,0.8)'
-										}}>get testimonials failed</p>
+											boxShadow: '0 0 1px 1px rgba(7,7,7,0.8)',
+											padding: '0.5rem'
+										}}>
+											{randomError.message}
+										</p>
 									</div>
 								</div>
 							}

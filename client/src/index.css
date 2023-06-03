@@ -11,7 +11,7 @@ html {
   font-size: 16px;
   margin: 0;
   overflow-x: hidden;
-  overscroll-behavior: none;
+  overscroll-behavior-x: none;
 }
 
 body {
@@ -22,4 +22,6 @@ body {
   background-color: #0e0e0e;
   min-height: 100vh;
   color: #ffffff;
+  overflow-x: hidden;
+  overscroll-behavior-x: none;
 }

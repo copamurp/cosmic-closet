@@ -2,10 +2,10 @@ import styled from 'styled-components';
 
 const StyledMediaWrapper = styled.div`
   border-radius: 1rem;
-  background-color: rgba(67, 67, 67, 0.4);
-  box-shadow: 0 0 4px 1px ${props => props.$isBanner ? 'white' : 'red'};
+  background: radial-gradient(ellipse at top left, rgba(255, 255, 255, 0.2) 0, rgba(255, 255, 255, 0.02) 100%);
+  box-shadow: 0 0 3px ${props => props.$isBanner ? '#ffffff' : 'red'};
   padding: 1rem;
-  
+
   .media-label {
 	width: 100%;
 	text-align: center;

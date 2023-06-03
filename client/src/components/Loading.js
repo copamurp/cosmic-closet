@@ -3,13 +3,22 @@ import {icon} from "@fortawesome/fontawesome-svg-core/import.macro";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 const StyledLoading = styled.div`
-	width: ${props => props.$controlWidth ? props.$controlWidth : '100%'};
+  min-width: 250px;
+  max-width: 500px;
+  width: 100%;
+  height: 100%;
+  min-height: 250px;
+  max-height: 250px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const Loading = () => {
 	return (
 		<StyledLoading $controlWidth>
-			<FontAwesomeIcon icon={icon({name: 'spinner', style: 'regular', family: 'sharp'})} spin />;
+			<FontAwesomeIcon icon={icon({name: 'spinner', style: 'regular', family: 'sharp'})} spinPulse size={'3x'}/>;
 		</StyledLoading>
 	)
 }
