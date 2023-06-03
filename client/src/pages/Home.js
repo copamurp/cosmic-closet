@@ -138,7 +138,7 @@ const StyledHome = styled.div`
   }
 
   .testimonials {
-	background: #5B5AA8;
+	background: radial-gradient(circle at bottom, #5B5AA8 0, #6f6ecc 100%);
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -234,9 +234,11 @@ const Home = () => {
 									textAlign: 'center', width: feedWidth, height: feedHeight, fontSize: '2rem'
 								}}
 							>
-								<FontAwesomeIcon icon={icon({name: 'robot', style: 'regular', family: 'sharp'})}
-								                 size={'2x'}/>
-								get tweets failed :(
+								<FontAwesomeIcon icon={icon({name: 'robot', style: 'light', family: 'classic'})}
+								                 size={'2x'}
+								                 style={{marginBottom: '2rem'}}
+								/>
+								get tweets failed
 							</div>
 						)
 					}}
@@ -322,15 +324,50 @@ const Home = () => {
 					{testimonialsLoading ?
 						<Loading/>
 						:
-						<>
+						<div style={{width: '100%', height: '100%'}}>
 							{testimonialsStatus === STATUS.GOOD ?
 								<Carousel children={testimonials}/>
 								:
-								<div>
-									<h1>Failed to load</h1>
+								<div style={{
+									color: 'white',
+									textAlign: 'center',
+									fontSize: '2rem',
+									padding: '4rem',
+									width: '100vw',
+									minWidth: '350px',
+									maxWidth: '750px',
+									height: '40vh',
+									minHeight: '350px',
+									maxHeight: '750px',
+								}}>
+									<FontAwesomeIcon icon={icon({name: 'robot', style: 'light', family: 'classic'})}
+									                 size={'2x'}
+									                 style={{marginBottom: '2rem'}}
+									/>
+									<div style={{
+										backgroundColor: 'rgba(7,7,7,0.5)',
+										flex: '1',
+										width: '100%',
+										height: '100%',
+										padding: '1rem',
+										borderRadius: '0.25rem',
+										boxShadow: '0 0 3px 1px rgba(7,7,7,0.8)'
+									}}>
+										<p style={{fontSize: '1rem'}}>error</p>
+										<p style={{
+											fontSize: '1rem',
+											height: '90%',
+											display: 'flex',
+											alignItems: 'center',
+											justifyContent: 'center',
+											backgroundColor: 'rgba(0,0,0,0.4)',
+											borderRadius: '0.25rem',
+											boxShadow: '0 0 1px 1px rgba(7,7,7,0.8)'
+										}}>get testimonials failed</p>
+									</div>
 								</div>
 							}
-						</>
+						</div>
 					}
 				</div>
 			</div>
