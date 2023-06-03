@@ -35,7 +35,7 @@ const StyledHome = styled.div`
 
   .content {
 	min-height: 90vh;
-	background-image: url(${require("../assets/images/home/orbit.jpg")});
+	background-image: url(${require("../assets/images/home/orbit.webp")});
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;

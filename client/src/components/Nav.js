@@ -159,7 +159,7 @@ const Nav = () => {
 	return (
 		<NavWrapper>
 			<div className={'header'}>
-				<img className={'header-banner'} src={require('../assets/images/banner.png')} alt={'The' +
+				<img className={'header-banner'} src={require('../assets/images/banner.webp')} alt={'The' +
 					' Cosmic Closet Podcast' +
 					' Banner'}/>
 				<div className={'header-text'}>
