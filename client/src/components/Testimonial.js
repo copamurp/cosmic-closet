@@ -14,10 +14,15 @@ const StyledTestimonial = styled.div`
 	padding: 2rem;
 	background-color: rgba(255, 255, 255, 0.25);
 
+	> div:not(:last-child) {
+	  margin-bottom: 1.5rem;
+	}
+
+	@media only screen and (max-width: 768px) {
+	  padding: 0.5rem;
+	}
+
 	.user {
-	  position: absolute;
-	  top: 10px;
-	  left: 10px;
 	  display: flex;
 	  align-items: center;
 	  justify-content: flex-start;
@@ -30,12 +35,20 @@ const StyledTestimonial = styled.div`
 		color: #ffffff;
 		font-size: 1.25rem;
 		font-weight: 500;
+
+		@media only screen and (max-width: 768px) {
+		  font-size: 1.10rem;
+		}
 	  }
 
 	  .user-date {
 		color: #ffffff;
 		font-size: 1rem;
 		font-weight: 300;
+
+		@media only screen and (max-width: 768px) {
+		  font-size: 0.8rem;
+		}
 	  }
 	}
 
@@ -44,9 +57,38 @@ const StyledTestimonial = styled.div`
 	  flex-direction: column;
 	  align-items: center;
 	  justify-content: center;
-	  min-height: 200px;
-	  width: 75%;
-	  margin: 0 auto;
+	  min-height: 250px;
+	  width: 90%;
+	  margin: 0.5rem auto;
+	  background-color: rgba(255, 255, 255, 0.2);
+	  border-radius: 0.5rem;
+
+	  @media only screen and (max-width: 768px) {
+		min-height: 0;
+	  }
+
+	  .user-quote {
+		padding: 1rem;
+	  }
+	}
+
+	.actions {
+	  display: flex;
+	  align-items: center;
+	  justify-content: flex-end;
+
+	  button {
+		background: rgba(255, 255, 255, 0.1);
+		border: 1px solid #ffffff;
+		border-radius: 0.25rem;
+		color: #ffffff;
+		padding: 0.5rem;
+		box-shadow: 0 0 1px #ffffff;
+
+		@media only screen and (max-width: 768px) {
+		  padding: 0.25rem;
+		}
+	  }
 	}
   }
 `;
@@ -78,6 +120,9 @@ const Testimonial = ({_name, _quote, _rating, _date}) => {
 				</div>
 				<div className={'quote-wrapper'}>
 					<p className={'user-quote'}>{quote}</p>
+				</div>
+				<div className={'actions'}>
+					<button id={'reply'}>Reply</button>
 				</div>
 			</div>
 		</StyledTestimonial>

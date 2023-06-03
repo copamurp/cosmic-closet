@@ -21,12 +21,6 @@ const StyledHome = styled.div`
 	border-bottom: 2px solid #ffffff;
 	background: radial-gradient(ellipse at center, #0b0b0b 10vw, #0e0e0e 100vw);
 
-	.header-banner {
-	  width: 100%;
-	  max-width: 600px;
-	  margin: 0 auto;
-	}
-
 	h1 {
 	  color: #ffffff;
 	  font-size: 2rem;
@@ -41,7 +35,7 @@ const StyledHome = styled.div`
 
   .content {
 	min-height: 90vh;
-	background-image: url(${require("../assets/images/home/galaxy.jpg")});
+	background-image: url(${require("../assets/images/home/orbit.jpg")});
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -150,7 +144,6 @@ const StyledHome = styled.div`
 	align-items: center;
 	justify-content: space-evenly;
 	width: 100%;
-	height: 50vh;
 	padding: 4rem 0;
 	border-bottom: 2px solid #ffffff;
 
@@ -160,14 +153,14 @@ const StyledHome = styled.div`
 	  font-weight: 600;
 	  justify-self: flex-start;
 	}
-
-	.carousel-wrapper {
-	  width: 100vw;
-	  max-width: 1800px;
-	  min-height: 50vh;
-	}
   }
 `;
+
+const STATUS = {
+	DEFAULT: 0,
+	GOOD: 1,
+	BAD: -1
+};
 
 const Home = () => {
 	const {height, width} = useWindowSize();
@@ -176,6 +169,8 @@ const Home = () => {
 	const [tweetsLoading, setTweetsLoading] = useState(true);
 	const [tweetTimeline, setTweetTimeline] = useState(null);
 	const [testimonials, setTestimonials] = useState([]);
+	const [testimonialsLoading, setTestimonailsLoading] = useState(false);
+	const [testimonialsStatus, setTestimonialsStatus] = useState(STATUS.DEFAULT);
 
 	useEffect(() => {
 		const loadTestimonials = async () => {
@@ -194,12 +189,21 @@ const Home = () => {
 						})
 					)
 				})
+				.then(() => {
+					setTestimonialsStatus(STATUS.GOOD);
+				})
+				.catch((err) => {
+					console.log(err);
+					setTestimonialsStatus(STATUS.BAD);
+				})
 		}
 
-		loadTestimonials().then(() => {
-			console.log('testimonials loaded')
-		});
+		loadTestimonials();
 	}, []);
+
+	useEffect(() => {
+		setTestimonailsLoading(false);
+	}, [testimonialsStatus]);
 
 	useEffect(() => {
 		const handleResize = async () => {
@@ -315,7 +319,19 @@ const Home = () => {
 			<div className={'testimonials'}>
 				<h2>Testimonials</h2>
 				<div className={'testimonials-wrapper'}>
-					<Carousel children={testimonials}/>
+					{testimonialsLoading ?
+						<Loading/>
+						:
+						<>
+							{testimonialsStatus === STATUS.GOOD ?
+								<Carousel children={testimonials}/>
+								:
+								<div>
+									<h1>Failed to load</h1>
+								</div>
+							}
+						</>
+					}
 				</div>
 			</div>
 		</StyledHome>

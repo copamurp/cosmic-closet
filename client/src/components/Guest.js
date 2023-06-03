@@ -1,30 +1,36 @@
 import styled from 'styled-components';
 import {useEffect, useState} from "react";
 
-const StyledGuest = styled.div`
-  flex-basis: 30%;
+const StyledGuest = styled.a`
+  text-decoration: none;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   transform: scale(1);
   transition: transform 0.5s ease-in-out;
+  cursor: pointer;
+  margin: 4rem;
+
+  @media only screen and (max-width: 768px) {
+	margin: 0.5rem;
+  }
 
   :hover {
 	transform: scale(1.2);
   }
+`;
 
-  .image-wrapper {
-	width: 100px;
-	height: 100px;
-	position: relative;
-	overflow: hidden;
-	border-radius: 50%;
+const StyledWrapper = styled.div`
+  width: 100px;
+  height: 100px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
 
-	img {
-	  height: 100%;
-	  width: auto;
-	}
+  img {
+	height: 100%;
+	width: auto;
   }
 `;
 
@@ -35,9 +41,10 @@ const StyledName = styled.p`
   color: ${props => props.$isHovered ? '#7270ea' : '#5B5AA8'};
 `;
 
-const Guest = ({image, name}) => {
-	const [guestImage] = useState(image || require('../assets/images/guests/rsutton.webp'));
+const Guest = ({name, episode, image}) => {
 	const [guestName] = useState(name || "Demonologist");
+	const [guestEpisode] = useState(episode || "https://www.youtube.com/@CosmicCloset");
+	const [guestImage] = useState(image || require('../assets/images/guests/rsutton.webp'));
 	const [hovered, setHovered] = useState(false);
 	const [wings, setWings] = useState(false);
 
@@ -52,10 +59,11 @@ const Guest = ({image, name}) => {
 	}, [name]);
 
 	return (
-		<StyledGuest onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
-			<div className={'image-wrapper'}>
+		<StyledGuest href={guestEpisode} target={"_blank"} onMouseEnter={() => setHovered(true)}
+		             onMouseLeave={() => setHovered(false)}>
+			<StyledWrapper $isHovered={hovered} $isWings={wings}>
 				<img src={guestImage} alt={guestName}/>
-			</div>
+			</StyledWrapper>
 			<StyledName $isHovered={hovered} className={'guest-name'}>{guestName}</StyledName>
 		</StyledGuest>
 	)

@@ -4,11 +4,12 @@ import Guest from "../components/Guest";
 import Loading from "../components/Loading";
 
 const StyledAbout = styled.div`
-  min-height: 100vh;
+  min-height: 70vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  padding-top: 4rem;
 
   .about-intro {
 	display: flex;
@@ -17,21 +18,17 @@ const StyledAbout = styled.div`
 	justify-content: center;
 
 	h1 {
+	  text-align: center;
 	  color: #5B5AA8;
 	  font-size: 2rem;
 	  font-size: clamp(2rem, 1.8rem + 0.75vw, 3rem);
 	  font-weight: 600;
-	}
-
-	h2 {
-	  color: #ffffff;
-	  font-size: 1.5rem;
-	  font-size: clamp(1.5rem, 1.35rem + 0.75vw, 2.25rem);
+	  margin-bottom: 2rem;
 	}
   }
 
   .about-content {
-	min-height: 20vh;
+	min-height: 30vh;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -43,11 +40,17 @@ const StyledAbout = styled.div`
 	  color: #ffffff;
 	  font-size: 1.25rem;
 	  font-weight: 200;
+
+	  @media only screen and (max-width: 768px) {
+		font-size: 1rem;
+		line-height: 1.75rem;
+		margin-bottom: 4rem;
+	  }
 	}
   }
 
   .guests {
-	min-height: 30vh;
+	min-height: 50vh;
 	width: 75%;
 	margin: 0 auto;
 	display: flex;
@@ -64,12 +67,27 @@ const About = () => {
 	useEffect(() => {
 		const loadGuests = async () => {
 			let guests = [
-				<Guest name={"Wings"} image={require('../assets/images/guests/jordie.webp')}/>,
-				<Guest name={"Ralph Sutton"} image={require('../assets/images/guests/rsutton.webp')}/>,
-				<Guest name={"Maria"} image={require('../assets/images/guests/mmaria.webp')}/>,
-				<Guest name={"Molassia"} image={require('../assets/images/guests/kbaugh.webp')}/>,
-				<Guest name={"Demonologist"} image={require('../assets/images/guests/demon.webp')}/>
-			].sort();
+				<Guest name={"Wings of Redemption"} episode={'https://www.youtube.com/watch?v=wDex6WahAls'}
+				       image={require('../assets/images/guests/jordie.webp')}/>,
+				<Guest name={"Ralph Sutton"} episode={'https://www.youtube.com/watch?v=_YpAWJmO2uk'}
+				       image={require('../assets/images/guests/rsutton.webp')}/>,
+				<Guest name={"Medium Maria"} episode={'https://www.youtube.com/watch?v=XzF0YzAlSqQ'}
+				       image={require('../assets/images/guests/mmaria.webp')}/>,
+				<Guest name={"President of Molassia"}
+				       episode={'https://www.youtube.com/watch?v=P3d1sFBhhvs&start=6&themeRefresh=1'}
+				       image={require('../assets/images/guests/kbaugh.webp')}/>,
+				<Guest name={"Demonologist LJ"} episode={'https://www.youtube.com/watch?v=p5QR9gpYALs'}
+				       image={require('../assets/images/guests/demon.webp')}/>,
+				<Guest name={"Rick Tumlinson"} episode={'https://www.youtube.com/watch?v=awfOXxz3TSc'}
+				       image={require('../assets/images/guests/rtumlinson.webp')}/>,
+				<Guest name={"Rubzy"} episode={'https://www.youtube.com/watch?v=mTt2DSsGExs'}
+				       image={require('../assets/images/guests/rubzy.webp')}/>,
+				<Guest name={"WouldYouBlather"} episode={'https://www.youtube.com/watch?v=Dmhj1sTla1g'}
+				       image={require('../assets/images/guests/wblather.webp')}/>,
+			].sort((a, b) => {
+				console.log(a)
+				return a.props.name > b.props.name ? 1 : a.props.name < b.props.name ? -1 : 0;
+			});
 
 			setGuests(guests);
 		}
@@ -83,7 +101,6 @@ const About = () => {
 		<StyledAbout>
 			<div className={'about-intro'}>
 				<h1>The Cosmic Closet Podcast Lore</h1>
-				<h2>"The home of news that wants to, needs to, and will be discussed."</h2>
 			</div>
 			<div className={'about-content'}>
 				<p>

@@ -22,16 +22,17 @@ const NavWrapper = styled.nav`
     
     @media only screen and (max-width: 768px) {
       flex-direction: column;
-      align-items: center;
+	  align-items: center;
 	}
 
 	.header-banner {
 	  max-width: 40%;
 	  height: auto;
 	  margin-top: 2rem;
-	  
+
 	  @media only screen and (max-width: 768px) {
-	    max-width: 80%;
+		max-width: 80%;
+		margin-bottom: 1rem;
 	  }
 	}
 
@@ -40,9 +41,10 @@ const NavWrapper = styled.nav`
 	  flex-direction: column;
 	  align-items: center;
 	  justify-content: center;
-	  
+
 	  @media only screen and (max-width: 768px) {
-	    align-items: center;
+		align-items: center;
+		padding: 1rem;
 	  }
 
 	  h2, h3 {
@@ -69,7 +71,7 @@ const NavWrapper = styled.nav`
 	    @media only screen and (max-width: 768px) {
 	      font-size: 0.75rem;
 	      		  font-size: clamp(0.75rem, 0.675rem + 0.5vw, 1.125rem);
-	      text-align: center;
+		  text-align: center;
 		}
 	  }
 	}
@@ -79,6 +81,7 @@ const NavWrapper = styled.nav`
 	margin: 1rem 0;
 	color: #a5a5a5;
 	width: 90%;
+	box-shadow: 0 0 2px white;
   }
 
   .nav {
