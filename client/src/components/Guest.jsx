@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import {useState} from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {icon} from '@fortawesome/fontawesome-svg-core/import.macro';
+import guest from '../assets/images/guests/rsutton.webp';
 
 const StyledGuest = styled.a`
   text-decoration: none;
@@ -16,7 +16,7 @@ const StyledGuest = styled.a`
   margin: 4rem;
 
   @media only screen and (max-width: 768px) {
-    margin: 0.5rem;
+    margin: 2rem;
   }
 
   :hover {
@@ -37,7 +37,8 @@ const StyledWrapper = styled.div`
   }
 
   .placeholder {
-    background: radial-gradient(circle at center, rgba(182, 152, 255, 0.1) 0, rgba(114, 112, 234, 0.5) 90%);
+    background: radial-gradient(circle at center,
+    rgba(182, 152, 255, 0.1) 0, rgba(114, 112, 234, 0.5) 90%);
   }
 `;
 
@@ -45,7 +46,7 @@ const StyledName = styled.p`
   font-size: ${(props) => props.$isHovered ? '1.65rem' : '1.5rem'};
   font-weight: 200;
   transition: color 0.5s ease-in-out, font-size 0.5s ease-in-out;
-  color: ${(props) => props.$isHovered ? '#7270ea' : '#5B5AA8'};
+  color: #7270ea;
 `;
 
 const StyledPlaceholderIcon = styled(FontAwesomeIcon)`
@@ -55,26 +56,32 @@ const StyledPlaceholderIcon = styled(FontAwesomeIcon)`
   height: 100px;
 `;
 
-const Guest = ({name, episode, image}) => {
-  const [imageLoaded, setImageLoaded] = useState(false);
-  const [guestName] = useState(name || 'Demonologist');
-  const [guestEpisode] = useState(episode || 'https://www.youtube.com/@CosmicCloset');
-  const [guestImage] = useState(image || require('../assets/images/guests/rsutton.webp'));
-  const [hovered, setHovered] = useState(false);
+class Guest extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      imageLoaded: false,
+      guestName: props.name || 'Demonologist',
+      guestEpisode: props.episode || 'https://www.youtube.com/@CosmicCloset',
+      guestImage: props.image || guest,
+      hovered: false,
+    };
+  }
 
-
-  return (
-    <StyledGuest href={guestEpisode} target={'_blank'} onMouseEnter={() => setHovered(true)}
-                 onMouseLeave={() => setHovered(false)}>
-      <StyledWrapper $isHovered={hovered}>
-        {imageLoaded ?
-          null :
-          <span className={'fa-stack placeholder'}
-                style={{width: '100px', height: '100px'}}>
+  render() {
+    return (
+      <StyledGuest href={this.state.guestEpisode} target={'_blank'}
+                   onMouseEnter={() => this.setState({hovered: true})}
+                   onMouseLeave={() => this.setState({hovered: false})}>
+        <StyledWrapper $isHovered={this.state.hovered}>
+          {this.state.imageLoaded ?
+            null :
+            <span className={'fa-stack placeholder'}
+                  style={{width: '100px', height: '100px'}}>
             <StyledPlaceholderIcon
               icon={icon({
                 name: 'user-astronaut',
-                style: 'duotone', family: 'classic'
+                style: 'duotone', family: 'classic',
               })}
               className={'fa-stack-1x'}
               fixedWidth
@@ -82,12 +89,14 @@ const Guest = ({name, episode, image}) => {
               size={'4x'}
             />
           </span>
-        }
-        <img src={guestImage} alt={guestName} onLoad={() => setImageLoaded(true)}/>
-      </StyledWrapper>
-      <StyledName $isHovered={hovered} className={'guest-name'}>{guestName}</StyledName>
-    </StyledGuest>
-  );
-};
+          }
+          <img src={this.state.guestImage} alt={this.state.guestName}
+               onLoad={() => this.setState({imageLoaded: true})}/>
+        </StyledWrapper>
+        <StyledName $isHovered={this.state.hovered} className={'guest-name'}>{this.state.guestName}</StyledName>
+      </StyledGuest>
+    )
+  }
+}
 
 export default Guest;

@@ -1,5 +1,3 @@
-const BASE_URL = "http://localhost:3005/";
-
 const NETWORK_STATUS = {
 	DEFAULT: {
 		code: 0,
@@ -13,9 +11,6 @@ const NETWORK_STATUS = {
 		code: -1,
 		description: 'Bad'
 	}
-}
+};
 
-module.exports = {
-	BASE_URL,
-	NETWORK_STATUS
-}
+export default NETWORK_STATUS;
