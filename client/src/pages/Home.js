@@ -207,10 +207,8 @@ const Home = () => {
 
 	useEffect(() => {
 		const handleResize = async () => {
-			if (width < 500) {
-				setFeedWidth(350);
-			} else if (width < 768) {
-				setFeedWidth(400);
+			if (width < 768) {
+				setFeedWidth(325);
 			} else if (width < 1200) {
 				setFeedWidth(650);
 			} else {
