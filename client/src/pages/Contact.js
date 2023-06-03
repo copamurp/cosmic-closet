@@ -4,6 +4,8 @@ import Loading from "../components/Loading";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {icon} from "@fortawesome/fontawesome-svg-core/import.macro";
 import getRandomError from "../helper/getRandomError";
+import ErrorDisplay from "../components/ErrorDisplay";
+import {NETWORK_STATUS} from "../config";
 
 const StyledContact = styled.div`
   position: relative;
@@ -99,14 +101,8 @@ const StyledWrapper = styled.div`
   }
 `;
 
-const CONTACT_STATUS = {
-	DEFAULT: 0,
-	GOOD: 1,
-	BAD: -1
-}
-
 const Contact = () => {
-	const [contactStatus, setContactStatus] = useState(CONTACT_STATUS.DEFAULT);
+	const [contactStatus, setContactStatus] = useState(NETWORK_STATUS.DEFAULT);
 	const [showContactForm, setShowContactForm] = useState(true);
 	const [loading, setLoading] = useState(false);
 
@@ -116,10 +112,10 @@ const Contact = () => {
 		sendMail({message: "hi"})
 			.then(res => {
 				clearTimeout(res[0]);
-				setContactStatus(CONTACT_STATUS.GOOD);
+				setContactStatus(NETWORK_STATUS.GOOD);
 			})
 			.catch(err => {
-				setContactStatus(CONTACT_STATUS.BAD);
+				setContactStatus(NETWORK_STATUS.BAD);
 			}).finally(() => setLoading(false));
 	}
 
@@ -169,48 +165,7 @@ const Contact = () => {
 					{loading ?
 						<Loading/>
 						:
-						<div style={{
-							color: 'white',
-							textAlign: 'center',
-							fontSize: '2rem',
-							padding: '4rem',
-							width: '100%',
-							minWidth: '350px',
-							maxWidth: '750px',
-							height: '40vh',
-							minHeight: '350px',
-							maxHeight: '750px',
-							margin: '0 auto'
-						}}>
-							<FontAwesomeIcon icon={icon({name: 'robot', style: 'light', family: 'classic'})}
-							                 size={'2x'}
-							                 style={{marginBottom: '2rem'}}
-							/>
-							<div style={{
-								backgroundColor: 'rgba(7,7,7,0.5)',
-								flex: '1',
-								width: '100%',
-								height: '100%',
-								padding: '1rem',
-								borderRadius: '0.25rem',
-								boxShadow: '0 0 3px 1px rgba(7,7,7,0.8)'
-							}}>
-								<p style={{fontSize: '1rem'}}>error {randomError.code}</p>
-								<p style={{
-									fontSize: '1rem',
-									height: '90%',
-									display: 'flex',
-									alignItems: 'center',
-									justifyContent: 'center',
-									backgroundColor: 'rgba(0,0,0,0.4)',
-									borderRadius: '0.25rem',
-									boxShadow: '0 0 1px 1px rgba(7,7,7,0.8)',
-									padding: '0.5rem'
-								}}>
-									{randomError.message}
-								</p>
-							</div>
-						</div>
+						<ErrorDisplay error={randomError}/>
 					}
 				</>
 			}
