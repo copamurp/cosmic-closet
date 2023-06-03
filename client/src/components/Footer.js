@@ -131,7 +131,7 @@ const Footer = () => {
 
 			<div className={'meta'}>
 				<div className={'cosmic-closet'}>
-					<img src={require('../assets/images/logo.png')} alt={'The Cosmic Closet Podcast logo.'}/>
+					<img src={require('../assets/images/logo.webp')} alt={'The Cosmic Closet Podcast logo.'}/>
 					<p>The Cosmic Closet Podcast</p>
 				</div>
 
