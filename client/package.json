@@ -45,15 +45,20 @@
     ]
   },
   "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+	"production": [
+	  ">0.2%",
+	  "not dead",
+	  "not op_mini all"
+	],
+	"development": [
+	  "last 1 chrome version",
+	  "last 1 firefox version",
+	  "last 1 safari version"
+	]
+  },
+  "devDependencies": {
+	"eslint": "^8.42.0",
+	"eslint-config-google": "^0.14.0",
+	"eslint-plugin-react": "^7.32.2"
   }
 }
