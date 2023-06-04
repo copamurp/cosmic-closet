@@ -204,11 +204,17 @@ const StyledHome = styled.div`
         height: 3rem;
         border-radius: 50%;
         color: #5B5AA8;
-        background-color: #ffffff;
+        background-color: transparent;
         cursor: pointer;
         transition: all 0.2s ease-in-out;
 
-        &:hover {
+        :disabled {
+          cursor: not-allowed;
+          color: #4a4a4a;
+          box-shadow: 0 0 2px 0 #5B5AA8;
+        }
+
+        &:hover:not(:disabled) {
           transform: translateY(-50%) scale(1.1);
           color: #ffffff;
           background-color: #5B5AA8;
@@ -218,15 +224,27 @@ const StyledHome = styled.div`
         @media only screen and (max-width: 768px) {
           top: 80%;
           transform: translateY(80%);
+
+          &:hover:not(:disabled) {
+            transform: translateY(80%) scale(1.1);
+          }
         }
       }
 
       .carousel-button-prev {
         left: 1rem;
+
+        @media only screen and (max-width: 768px) {
+          left: 10%;
+        }
       }
 
       .carousel-button-next {
         right: 1rem;
+
+        @media only screen and (max-width: 768px) {
+          right: 10%;
+        }
       }
     }
   }
@@ -247,7 +265,7 @@ class Home extends React.Component {
       testimonials: [],
       testimonialsLoading: false,
       testimonialsStatus: NETWORK_STATUS.DEFAULT,
-      displayedTestimonial: 0,
+      carouselDisabled: false,
       randomError: getRandomError(),
     };
     this.carouselRef = React.createRef();
@@ -305,9 +323,9 @@ class Home extends React.Component {
     }
 
     await loadTestimonials().then(res => {
-      this.setState({testimonialsStatus: res});
+      this.setState({testimonialsStatus: res, carouselDisabled: false});
     }).catch(err => {
-      this.setState({testimonialsStatus: err});
+      this.setState({testimonialsStatus: err, carouselDisabled: true});
     });
   }
 
@@ -409,7 +427,7 @@ class Home extends React.Component {
           <Carousel ref={this.carouselRef} className={'testimonials-carousel'} showThumbs={false} showStatus={false}
                     items={testimonialFeed}></Carousel>;
       } else {
-        testimonialFeed = <ErrorDisplay error={this.state.randomError}/>;
+        testimonialFeed = [<ErrorDisplay error={this.state.randomError}/>];
         carousel =
           <Carousel ref={this.carouselRef} className={'testimonials-carousel'} showThumbs={false} showStatus={false}
                     items={testimonialFeed}></Carousel>;
@@ -464,7 +482,7 @@ class Home extends React.Component {
           <h2>Testimonials</h2>
 
           <div className={'testimonials-wrapper'}>
-            <button className={'carousel-button-prev'} onClick={() => {
+            <button disabled={this.state.carouselDisabled} className={'carousel-button-prev'} onClick={() => {
               this.carouselRef.current.prevSlide()
             }}>
               <FontAwesomeIcon icon={icon({name: 'chevron-left', style: 'solid'})} size={'2x'}/>
@@ -474,7 +492,7 @@ class Home extends React.Component {
               {carousel}
             </div>
 
-            <button className={'carousel-button-next'} onClick={() => {
+            <button className={'carousel-button-next'} disabled={this.state.carouselDisabled} onClick={() => {
               this.carouselRef.current.nextSlide()
             }}>
               <FontAwesomeIcon icon={icon({name: 'chevron-right', style: 'solid'})} size={'2x'}/>
