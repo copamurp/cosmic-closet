@@ -6,46 +6,71 @@ import ErrorDisplay from "../components/ErrorDisplay";
 import NETWORK_STATUS from "../config.js";
 
 const StyledContact = styled.div`
-  position: relative;
-  width: 100%;
-
-  h1 {
-    text-align: center;
-    color: #ffffff;
-    font-size: 2rem;
-    font-size: clamp(2rem, 1.8rem + 0.75vw, 3rem);
-    font-weight: 600;
-    margin: 4rem 0;
-  }
-
-  .form-wrapper {
-    padding: 2rem;
     width: 100%;
-    background: radial-gradient(ellipse at bottom, #5B5AA8 25%, #4f4ddf 100%);
-    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5) inset;
+    min-height: 80vh;
 
-    @media only screen and (max-width: 768px) {
-      padding: 1rem 0;
+    h1 {
+        text-align: center;
+        color: #ffffff;
+        font-size: 2rem;
+        font-size: clamp(2rem, 1.8rem + 0.75vw, 3rem);
+        font-weight: 600;
+        margin: 2rem 0;
     }
-  }
 
-  .contact-form {
-    width: 100%;
-    max-width: 800px;
-    height: 100%;
-    margin: 4rem auto;
-    padding: 1rem 2rem;
+    .form-wrapper {
+        padding: 1rem;
+        min-height: 50vh;
+        height: 100%;
+        width: 100%;
+        background: radial-gradient(ellipse at bottom, #5B5AA8 25%, #4f4ddf 100%);
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5) inset;
+    }
 
-    @media only screen and (max-width: 768px) {
-      margin: 0 auto;
-      padding: 0;
-      width: 90%;
+    .contact-form {
+        width: 100%;
+        max-width: 800px;
+        height: 100%;
+        margin: 0 auto;
+        display: flex;
+
+        @media only screen and (max-width: 768px) {
+            flex-direction: column;
+        }
+
+        > div {
+            width: 50%;
+            margin: 0 2.5%;
+            display: flex;
+            flex-direction: column;
+
+            @media only screen and (max-width: 768px) {
+                margin: 0 auto;
+                width: 100%;
+
+                :not(:last-child) {
+                    float: none;
+                }
+
+                :last-child {
+                    float: none;
+                }
+            }
+
+            :not(:last-child) {
+                float: left;
+            }
+
+            :last-child {
+                float: right;
+            }
+        }
     }
 
     .submit-wrapper {
-      width: 100%;
-      display: flex;
-      align-items: center;
+        width: 100%;
+        display: flex;
+        align-items: center;
         justify-content: center;
         padding: 1rem;
 
@@ -67,83 +92,105 @@ const StyledContact = styled.div`
                 color: #202020;
                 border: 1px solid #4f4ddf;
             }
-      }
+        }
     }
-  }
 `;
 
 const StyledFormControl = styled.div`
-  margin-bottom: 2rem;
-
-  .wrapper {
-    min-width: 300px;
-    max-width: 600px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
-    padding: 2rem;
-    background-color: #181717;
-    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
-    border-radius: 0.5rem;
-
-    @media only screen and (max-width: 768px) {
-      padding: 1rem;
-    }
+    margin-bottom: 2rem;
 
     label {
-      color: #ffffff;
-      font-size: 1rem;
-      font-weight: 200;
-      margin-bottom: 0.5rem;
-
-      @media only screen and (max-width: 768px) {
+        color: #ffffff;
         font-size: 1rem;
+        font-weight: 200;
+        margin-bottom: 0.25rem;
 
-        &::after {
-            content: '*';
-            color: #ff0000;
+        @media only screen and (max-width: 768px) {
+            font-size: 1rem;
+
+            &::after {
+                content: '*';
+                color: #ff0000;
+            }
         }
-      }
     }
 
-      input, textarea {
-          padding: 0.5rem;
-          font-size: 1rem;
-          font-weight: 200;
-          border: 1px solid #4f4ddf;
-          border-radius: 0.5rem;
-          background-color: #202020;
-          color: #ffffff;
-          transition: border-color 0.5s ease-in-out;
-          min-width: 300px;
-          max-width: 600px;
-          width: 100%;
+    .wrapper {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+        margin: 0 auto;
+        padding: 0.5rem;
+        background-color: #181717;
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+        border-radius: 0.25rem;
 
-          :hover {
-              border-color: #ffffff;
-          }
+        @media only screen and (max-width: 768px) {
+            padding: 1rem;
+        }
 
-          :focus {
-              outline: none;
-          }
+        input {
+            width: 100%;
+            padding: 0.5rem;
+            font-size: 1rem;
+            font-weight: 200;
+            border: 1px solid #4f4ddf;
+            border-radius: 0.25rem;
+            background-color: #202020;
+            color: #ffffff;
+            transition: border-color 0.5s ease-in-out;
 
-          @media only screen and (max-width: 768px) {
-              font-size: 1rem;
-              width: 90%;
-          }
+            :hover {
+                border-color: #ffffff;
+            }
+
+            :focus {
+                outline: none;
+            }
+        }
     }
 
-    textarea {
-      min-height: 200px;
-      resize: none;
-      min-width: 300px;
-      max-width: 600px;
-      width: 100%;
+    .message {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0.5rem;
+        background-color: #181717;
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+        border-radius: 0.25rem;
+
+        @media only screen and (max-width: 768px) {
+            padding: 1rem;
+        }
+
+        textarea {
+            resize: none;
+            width: 100%;
+            height: 100%;
+            padding: 0.5rem;
+            font-size: 1rem;
+            font-weight: 200;
+            border: 1px solid #4f4ddf;
+            border-radius: 0.25rem;
+            background-color: #202020;
+            color: #ffffff;
+            transition: border-color 0.5s ease-in-out;
+            min-height: 200px;
+        }
     }
-  }
+
+    &#message {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
 `;
 
 class Contact extends React.Component {
@@ -192,39 +239,43 @@ class Contact extends React.Component {
                             <div className={'form-wrapper'}>
                                 <form className={'contact-form'}
                                       onSubmit={this.handleSubmit}>
-                                    <StyledFormControl>
-                                        <div className={'wrapper'}>
-                                            <label>First Name</label>
-                                            <input type={'text'}/>
-                                        </div>
-                                    </StyledFormControl>
+                                    <div>
+                                        <StyledFormControl>
+                                            <div className={'wrapper'}>
+                                                <label>First Name</label>
+                                                <input type={'text'}/>
+                                            </div>
+                                        </StyledFormControl>
 
-                                    <StyledFormControl>
-                                        <div className={'wrapper'}>
-                                            <label>Last Name</label>
-                                            <input type={'text'}/>
-                                        </div>
-                                    </StyledFormControl>
+                                        <StyledFormControl>
+                                            <div className={'wrapper'}>
+                                                <label>Last Name</label>
+                                                <input type={'text'}/>
+                                            </div>
+                                        </StyledFormControl>
 
-                                    <StyledFormControl>
-                                        <div className={'wrapper'}>
-                                            <label>E-mail</label>
-                                            <input type={'text'}/>
-                                        </div>
-                                    </StyledFormControl>
+                                        <StyledFormControl>
+                                            <div className={'wrapper'}>
+                                                <label>E-mail</label>
+                                                <input type={'text'}/>
+                                            </div>
+                                        </StyledFormControl>
+                                    </div>
 
-                                    <StyledFormControl>
-                                        <div className={'wrapper'}>
-                                            <label>Message</label>
-                                            <textarea/>
-                                        </div>
-                                    </StyledFormControl>
-
-                                    <div className={'submit-wrapper'}>
-                                        <input type={'submit'}
-                                               value={'Submit'}/>
+                                    <div>
+                                        <StyledFormControl id={'message'}>
+                                            <div className={'message'}>
+                                                <label>Message</label>
+                                                <textarea/>
+                                            </div>
+                                        </StyledFormControl>
                                     </div>
                                 </form>
+
+                                <div className={'submit-wrapper'}>
+                                    <input type={'submit'}
+                                           value={'Submit'}/>
+                                </div>
                             </div>
                             :
                             <>

@@ -4,25 +4,25 @@ import {NavLink} from "react-router-dom";
 import logo from '../assets/images/logo.webp';
 
 const StyledFooter = styled.footer`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  margin: 0 auto;
-  padding: 2rem;
-  background: radial-gradient(ellipse at bottom right, #1a1a1a 0, #0e0e0e 35%);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 2rem;
+    background: radial-gradient(ellipse at bottom right, #1a1a1a 0, #0e0e0e 35%);
+    min-height: 10vh;
 
-  button, p, a {
-    font-size: 1rem;
-    font-weight: 200;
-    text-decoration: none;
-    color: #ffffff;
-    transform: scale(1);
-    transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
+    button, p, a {
+        font-size: 1rem;
+        font-weight: 200;
+        text-decoration: none;
+        color: #ffffff;
+        transform: scale(1);
+        transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
 
-    :hover {
+        :hover {
       color: #a5a5a5;
       transform: scale(1.1);
     }

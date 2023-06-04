@@ -5,40 +5,41 @@ import {icon} from '@fortawesome/fontawesome-svg-core/import.macro';
 import SocialLink from "./SocialLink";
 
 const NavWrapper = styled.nav`
-  width: 100%;
-  font-family: 'Kanit', sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 2rem;
-  background: radial-gradient(ellipse at top left, #1a1a1a 10%, #0e0e0e 55%);
-
-  .header {
     width: 100%;
-    max-width: 1800px;
+    font-family: 'Kanit', sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin: 0 auto 2rem;
+    background: radial-gradient(ellipse at top left, #1a1a1a 10%, #0e0e0e 55%);
+    min-height: 10vh;
 
-    @media only screen and (max-width: 768px) {
-      flex-direction: column;
-      align-items: center;
-    }
+    .header {
+        width: 100%;
+        max-width: 1800px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
 
-    .header-banner {
-      max-width: 40%;
-      height: auto;
-      margin-top: 2rem;
+        @media only screen and (max-width: 768px) {
+            flex-direction: column;
+            align-items: center;
+        }
 
-      @media only screen and (max-width: 768px) {
-        max-width: 80%;
-        margin-bottom: 1rem;
-      }
-    }
+        .header-banner {
+            max-width: 30%;
+            height: auto;
+            margin-top: 2rem;
 
-    .header-text {
+            @media only screen and (max-width: 768px) {
+                max-width: 80%;
+                margin-bottom: 1rem;
+            }
+        }
+
+        .header-text {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -130,14 +131,18 @@ const NavWrapper = styled.nav`
 `;
 
 const SpotifyBadge = styled.img`
-  max-height: 32px;
-  transition: transform 0.2s ease-in-out;
-  transform: scale(1);
+    max-height: 32px;
+    transition: transform 0.2s ease-in-out;
+    transform: scale(1);
 
-  :hover {
-    transform: scale(1.1);
-    cursor: pointer;
-  }
+    @media only screen and (max-width: 768px) {
+        max-height: 24px;
+    }
+
+    :hover {
+        transform: scale(1.1);
+        cursor: pointer;
+    }
 `;
 
 const StyledNavLink = styled(NavLink)`

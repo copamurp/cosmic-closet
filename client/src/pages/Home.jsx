@@ -16,25 +16,25 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 const StyledHome = styled.div`
   width: 100%;
   background-image: url(${require("../assets/images/home/orbit.webp")});
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  min-height: 100vh;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 80vh;
 
-  .feed-wrapper {
-    padding: 2rem;
-  }
+    .feed-wrapper {
+        padding: 2rem;
+    }
 
-  .intro {
-    width: 100%;
-      background-color: #0e0e0e;
-      box-shadow: 0 -1rem 1rem rgba(0, 0, 0, 0.5) inset;
+    .intro {
+        width: 100%;
+        background-color: #0e0e0e;
+        box-shadow: 0 -1rem 1rem rgba(0, 0, 0, 0.5) inset;
 
-      > div {
+        > div {
           background-color: transparent;
           width: 100%;
           max-width: 1800px;
