@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const StyledMediaWrapper = styled.div`
     width: 100%;
-    max-width: 1280px;
+    max-width: 832px;
     height: 100%;
     max-height: 720px;
     border-radius: 1rem;

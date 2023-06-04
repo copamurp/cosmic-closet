@@ -30,32 +30,30 @@ const StyledHome = styled.div`
   }
 
   .intro {
-    min-height: 50vh;
     width: 100%;
-    background-color: #0e0e0e;
-    box-shadow: 0 -1rem 1rem rgba(0, 0, 0, 0.5) inset;
+      background-color: #0e0e0e;
+      box-shadow: 0 -1rem 1rem rgba(0, 0, 0, 0.5) inset;
 
-    > div {
-      background-color: transparent;
-      width: 100%;
-      max-width: 1800px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 4rem auto;
+      > div {
+          background-color: transparent;
+          width: 100%;
+          max-width: 1800px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 2rem auto;
 
-      h1 {
-        text-align: center;
-        color: #ffffff;
-        font-size: 2rem;
-        font-size: clamp(2rem, 1.8rem + 0.75vw, 3rem);
-        font-weight: 600;
+          h1 {
+              text-align: center;
+              color: #ffffff;
+              font-size: 2rem;
+              font-size: clamp(2rem, 1.8rem + 0.75vw, 3rem);
+              font-weight: 600;
+          }
       }
-    }
   }
 
   .content {
-    min-height: 90vh;
     width: 100%;
     background-color: transparent;
 
@@ -88,27 +86,27 @@ const StyledHome = styled.div`
           font-size: 1.25rem;
           font-weight: 200;
           line-height: 1.5;
-          text-align: center;
+            text-align: center;
         }
       }
     }
 
-    .socials-big {
-      display: flex;
-      align-items: center;
-      justify-content: space-evenly;
-      width: 75%;
-      margin: 4rem auto;
+      .socials-big {
+          display: flex;
+          align-items: center;
+          justify-content: space-evenly;
+          width: 75%;
+          margin: 2rem auto;
 
-      @media only screen and (max-width: 768px) {
-        width: 100%;
-        margin-bottom: 6rem;
+          @media only screen and (max-width: 768px) {
+              width: 100%;
+              margin-bottom: 6rem;
+          }
       }
-    }
 
-    .feed-wrapper {
-      width: 100%;
-      max-width: 1800px;
+      .feed-wrapper {
+          width: 100%;
+          max-width: 1800px;
       display: flex;
       align-items: stretch;
       justify-content: space-evenly;
@@ -124,19 +122,6 @@ const StyledHome = styled.div`
         background-color: rgba(67, 67, 67, 0.4);
         box-shadow: 0 0 4px 1px #ffffff;
         padding: 1rem;
-      }
-
-      .media-label {
-        width: 100%;
-        text-align: center;
-        border-radius: 0.5rem;
-        color: #ffffff;
-        font-size: 1.5rem;
-        font-size: clamp(1.5rem, 1.35rem + 0.75vw, 2.25rem);
-        margin-bottom: 1rem;
-        padding: 1rem;
-        background-color: rgba(0, 0, 0, 0);
-        box-shadow: 0 0 2px 1px #ffffff;
       }
 
       .video-wrapper {
@@ -157,26 +142,25 @@ const StyledHome = styled.div`
     }
   }
 
-  .testimonials {
-    min-height: 60vh;
-    background: radial-gradient(ellipse at bottom, #5B5AA8 25%, #4f4ddf 100%);
-    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5) inset;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    width: 100%;
-    padding: 4rem 0;
+    .testimonials {
+        background: radial-gradient(ellipse at bottom, #5B5AA8 25%, #4f4ddf 100%);
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5) inset;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 100%;
+        padding: 2rem 0;
 
-    h2 {
-      font-size: 2rem;
-      font-size: clamp(2rem, 1.8rem + 0.75vw, 3rem);
-      font-weight: 600;
-      justify-self: flex-start;
-    }
+        h2 {
+            font-size: 2rem;
+            font-size: clamp(2rem, 1.8rem + 0.75vw, 3rem);
+            font-weight: 600;
+            justify-self: flex-start;
+        }
 
-    .testimonials-wrapper {
-      position: relative;
+        .testimonials-wrapper {
+            position: relative;
       width: 100%;
       display: flex;
       align-items: center;
@@ -288,8 +272,8 @@ class Home extends React.Component {
 
     await updateDims().then(() => {
       this.setState({
-        feedWidth:  this.state.width - 96,
-        feedHeight: this.state.height * 0.4,
+          feedWidth:  this.state.width > 800 ? 800 : this.state.width - 96,
+          feedHeight: this.state.height * 0.2,
       });
     });
   }
@@ -397,24 +381,28 @@ class Home extends React.Component {
                                 screenName: 'Cosmic_Closet',
                               }}
                               options={{
-                                height: this.state.feedHeight,
-                                width:  this.state.feedWidth,
-                                theme:  'dark',
+                                  height: this.state.feedHeight > 500
+                                                  ? this.state.feedHeight
+                                                  : 500,
+                                  width:  this.state.feedWidth,
+                                  theme:  'dark',
                               }}
                       />,
               youtube:
                       <YouTube
                               videoId="24eohEB4Saw"
                               opts={{
-                                height: this.state.feedHeight,
-                                width:  this.state.feedWidth < 1248
-                                                ? this.state.feedWidth
-                                                : 1248,
+                                  height: this.state.feedHeight > 300
+                                                  ? this.state.feedHeight
+                                                  : 300,
+                                  width:  this.state.feedWidth < 800
+                                                  ? this.state.feedWidth
+                                                  : 800,
                               }}
                               style={{
-                                width: this.state.feedWidth < 1248
-                                               ? this.state.feedWidth
-                                               : 1248,
+                                  width: this.state.feedWidth < 800
+                                                 ? this.state.feedWidth
+                                                 : 800,
                               }}
                       />,
             },

@@ -46,27 +46,27 @@ const StyledContact = styled.div`
       width: 100%;
       display: flex;
       align-items: center;
-      justify-content: center;
-      padding: 1rem;
+        justify-content: center;
+        padding: 1rem;
 
-      input[type='submit'] {
-        margin-top: 1rem;
-        padding: 1rem 2rem;
-        background-color: #202020;
-        color: #ffffff;
-        font-size: 1rem;
-        font-weight: 400;
-        border: 1px solid #ffffff;
-        border-radius: 0.5rem;
-        cursor: pointer;
-        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
-        transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out, border 0.5s ease-in-out;
+        input[type='submit'] {
+            margin-top: 1rem;
+            padding: 1rem 2rem;
+            background-color: #202020;
+            color: #ffffff;
+            font-size: 1rem;
+            font-weight: 400;
+            border: 1px solid #4f4ddf;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+            transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out, border 0.5s ease-in-out;
 
-        :hover {
-          background-color: #ffffff;
-          color: #202020;
-          border: 1px solid #4f4ddf;
-        }
+            :hover {
+                background-color: #ffffff;
+                color: #202020;
+                border: 1px solid #4f4ddf;
+            }
       }
     }
   }
@@ -103,37 +103,37 @@ const StyledFormControl = styled.div`
         font-size: 1rem;
 
         &::after {
-          content: '*';
-          color: #ff0000;
+            content: '*';
+            color: #ff0000;
         }
       }
     }
 
-    input, textarea {
-      padding: 0.5rem;
-      font-size: 1rem;
-      font-weight: 200;
-      border: 1px solid #ffffff;
-      border-radius: 0.5rem;
-      background-color: #202020;
-      color: #ffffff;
-      transition: border-color 0.5s ease-in-out;
-      min-width: 300px;
-      max-width: 600px;
-      width: 100%;
+      input, textarea {
+          padding: 0.5rem;
+          font-size: 1rem;
+          font-weight: 200;
+          border: 1px solid #4f4ddf;
+          border-radius: 0.5rem;
+          background-color: #202020;
+          color: #ffffff;
+          transition: border-color 0.5s ease-in-out;
+          min-width: 300px;
+          max-width: 600px;
+          width: 100%;
 
-      :hover {
-        border-color: #4f4ddf;
-      }
+          :hover {
+              border-color: #ffffff;
+          }
 
-      :focus {
-        outline: none;
-      }
+          :focus {
+              outline: none;
+          }
 
-      @media only screen and (max-width: 768px) {
-        font-size: 1rem;
-        width: 90%;
-      }
+          @media only screen and (max-width: 768px) {
+              font-size: 1rem;
+              width: 90%;
+          }
     }
 
     textarea {
