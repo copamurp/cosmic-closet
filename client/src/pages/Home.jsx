@@ -203,7 +203,7 @@ const StyledHome = styled.div`
         width: 3rem;
         height: 3rem;
         border-radius: 50%;
-        color: #5B5AA8;
+        color: #ffffff;
         background-color: transparent;
         cursor: pointer;
         transition: all 0.2s ease-in-out;
