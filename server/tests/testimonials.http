@@ -1,0 +1,9 @@
+GET http://localhost:3005/api/testimonials
+Accept: application/json
+
+###
+
+GET http://localhost:3005/api/testimonials/647a61f581beb8d68137c1f8
+Accept: application/json
+
+###

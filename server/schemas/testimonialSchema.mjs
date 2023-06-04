@@ -2,25 +2,29 @@ import {Schema} from 'mongoose';
 
 const testimonialSchema = new Schema(
 	{
-		name: {
-			type: String,
+		name:   {
+			type:     String,
 			required: true,
-			trim: true,
+			trim:     true,
 		},
-		quote: {
-			type: String,
+		quote:  {
+			type:     String,
 			required: true,
-			trim: true,
+			trim:     true,
 		},
 		rating: {
-			type: Number,
+			type:     Number,
 			required: true,
 		},
-		date: {
-			type: Date,
-			required: true
-		}
-	}
+		date:   {
+			type:     Date,
+			required: true,
+		},
+		title:  {
+			type:     String,
+			required: true,
+		},
+	},
 )
 
 export default testimonialSchema;
