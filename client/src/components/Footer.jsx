@@ -108,43 +108,51 @@ const StyledFooter = styled.footer`
 `;
 
 class Footer extends React.Component {
-  render() {
-    return (
-      <StyledFooter>
-        <div className={'link-wrapper'}>
-          <div className={'site-links'}>
-            <button
-              onClick={() => {
-                window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
-              }}
-            >Scroll To Top
-            </button>
-            <NavLink to={'/about'}>About</NavLink>
-            <NavLink to={'/contact'}>Contact Us</NavLink>
-          </div>
+    render() {
+        return (
+                <StyledFooter>
+                    <div className={'link-wrapper'}>
+                        <div className={'site-links'}>
+                            <button
+                                    onClick={() => {
+                                        window.scrollTo({
+                                            top:      0,
+                                            left:     0,
+                                            behavior: 'smooth',
+                                        })
+                                    }}
+                            >Scroll To Top
+                            </button>
+                            <NavLink to={'/about'}>About</NavLink>
+                            <NavLink to={'/contact'}>Contact Us</NavLink>
+                        </div>
 
-          <div className={'social-links'}>
-            <a href={'https://open.spotify.com/show/7s2ljVGvKi30OZ3uR6zWKE'} target={'_blank'}
-               rel="noreferrer">Spotify</a>
-            <a href={'https://www.youtube.com/@CosmicCloset'} target={'_blank'}
-               rel="noreferrer">YouTube</a>
-            <a href={'https://twitter.com/cosmic_closet?lang=en'} target={'_blank'}
-               rel="noreferrer">Twitter</a>
-          </div>
-        </div>
+                        <div className={'social-links'}>
+                            <a href={'https://open.spotify.com/show/7s2ljVGvKi30OZ3uR6zWKE'}
+                               target={'_blank'}
+                               rel="noreferrer">Spotify</a>
+                            <a href={'https://www.youtube.com/@CosmicCloset'}
+                               target={'_blank'}
+                               rel="noreferrer">YouTube</a>
+                            <a href={'https://twitter.com/cosmic_closet?lang=en'}
+                               target={'_blank'}
+                               rel="noreferrer">Twitter</a>
+                        </div>
+                    </div>
 
 
-        <div className={'meta'}>
-          <div className={'cosmic-closet'}>
-            <img src={logo} alt={'The Cosmic Closet Podcast logo'}/>
-            <p>The Cosmic Closet Podcast</p>
-          </div>
+                    <div className={'meta'}>
+                        <div className={'cosmic-closet'}>
+                            <img src={logo}
+                                 alt={'The Cosmic Closet Podcast logo'}/>
+                            <p>The Cosmic Closet Podcast</p>
+                        </div>
 
-          <p>contactcosmiccloset@gmail.com</p>
-        </div>
-      </StyledFooter>
-    )
-  }
+                        <p>contactcosmiccloset@gmail.com</p>
+                    </div>
+                </StyledFooter>
+        )
+    }
 }
 
 export default Footer;

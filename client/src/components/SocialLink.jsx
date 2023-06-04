@@ -12,24 +12,25 @@ const StyledSocial = styled(FontAwesomeIcon)`
 `;
 
 class SocialLink extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      link: props.link,
-      icon: props.icon,
-      color: props.color,
-      size: props.size,
+    constructor(props) {
+        super(props);
+        this.state = {
+            link:  props.link,
+            icon:  props.icon,
+            color: props.color,
+            size:  props.size,
+        }
     }
-  }
 
-  render() {
-    return (
-      <a href={this.state.link} target="_blank" rel="noreferrer">
-        <StyledSocial icon={this.state.icon} style={{color: this.state.color}}
-                      size={this.state.size}/>
-      </a>
-    )
-  }
+    render() {
+        return (
+                <a href={this.state.link} target="_blank" rel="noreferrer">
+                    <StyledSocial icon={this.state.icon}
+                                  style={{color: this.state.color}}
+                                  size={this.state.size}/>
+                </a>
+        )
+    }
 }
 
 export default SocialLink;

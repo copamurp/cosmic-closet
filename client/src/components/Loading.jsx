@@ -17,13 +17,17 @@ const StyledLoading = styled.div`
 `;
 
 class Loading extends React.Component {
-  render() {
-    return (
-      <StyledLoading $controlWidth>
-        <FontAwesomeIcon icon={icon({name: 'spinner', style: 'regular', family: 'sharp'})} spinPulse size={'3x'}/>;
-      </StyledLoading>
-    )
-  }
+    render() {
+        return (
+                <StyledLoading $controlWidth>
+                    <FontAwesomeIcon icon={icon({
+                        name:   'spinner',
+                        style:  'regular',
+                        family: 'sharp',
+                    })} spinPulse size={'3x'}/>;
+                </StyledLoading>
+        )
+    }
 }
 
 export default Loading;

@@ -45,31 +45,35 @@ const StyledError = styled.div`
 `;
 
 class ErrorDisplay extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      error: this.props.error
+    constructor(props) {
+        super(props);
+        this.state = {
+            error: this.props.error,
+        }
     }
-  }
 
-  render() {
-    return (
-      <StyledError>
-        <FontAwesomeIcon icon={icon({name: 'robot', style: 'light', family: 'classic'})}
-                         size={'2x'}
-                         style={{marginBottom: '2rem'}}
-        />
-        <div className={'terminal'}>
-          <p className={'error-code'}>
-            error {this.state.error.code}
-          </p>
-          <p className={'error-message'}>
-            {this.state.error.message}
-          </p>
-        </div>
-      </StyledError>
-    )
-  }
+    render() {
+        return (
+                <StyledError>
+                    <FontAwesomeIcon icon={icon({
+                        name:   'robot',
+                        style:  'light',
+                        family: 'classic',
+                    })}
+                                     size={'2x'}
+                                     style={{marginBottom: '2rem'}}
+                    />
+                    <div className={'terminal'}>
+                        <p className={'error-code'}>
+                            error {this.state.error.code}
+                        </p>
+                        <p className={'error-message'}>
+                            {this.state.error.message}
+                        </p>
+                    </div>
+                </StyledError>
+        )
+    }
 }
 
 export default ErrorDisplay;

@@ -57,46 +57,52 @@ const StyledPlaceholderIcon = styled(FontAwesomeIcon)`
 `;
 
 class Guest extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      imageLoaded: false,
-      guestName: props.name || 'Demonologist',
-      guestEpisode: props.episode || 'https://www.youtube.com/@CosmicCloset',
-      guestImage: props.image || guest,
-      hovered: false,
-    };
-  }
+    constructor(props) {
+        super(props);
+        this.state = {
+            imageLoaded:  false,
+            guestName:    props.name || 'Demonologist',
+            guestEpisode: props.episode || 'https://www.youtube.com/@CosmicCloset',
+            guestImage:   props.image || guest,
+            hovered:      false,
+        };
+    }
 
-  render() {
-    return (
-      <StyledGuest href={this.state.guestEpisode} target={'_blank'}
-                   onMouseEnter={() => this.setState({hovered: true})}
-                   onMouseLeave={() => this.setState({hovered: false})}>
-        <StyledWrapper $isHovered={this.state.hovered}>
-          {this.state.imageLoaded ?
-            null :
-            <span className={'fa-stack placeholder'}
-                  style={{width: '100px', height: '100px'}}>
+    render() {
+        return (
+                <StyledGuest href={this.state.guestEpisode} target={'_blank'}
+                             onMouseEnter={() => this.setState({hovered: true})}
+                             onMouseLeave={() => this.setState({hovered: false})}>
+                    <StyledWrapper $isHovered={this.state.hovered}>
+                        {this.state.imageLoaded ?
+                                null :
+                                <span className={'fa-stack placeholder'}
+                                      style={{
+                                          width:  '100px',
+                                          height: '100px',
+                                      }}>
             <StyledPlaceholderIcon
-              icon={icon({
-                name: 'user-astronaut',
-                style: 'duotone', family: 'classic',
-              })}
-              className={'fa-stack-1x'}
-              fixedWidth
-              fixedHeight
-              size={'4x'}
+                    icon={icon({
+                        name:   'user-astronaut',
+                        style:  'duotone',
+                        family: 'classic',
+                    })}
+                    className={'fa-stack-1x'}
+                    fixedWidth
+                    fixedHeight
+                    size={'4x'}
             />
           </span>
-          }
-          <img src={this.state.guestImage} alt={this.state.guestName}
-               onLoad={() => this.setState({imageLoaded: true})}/>
-        </StyledWrapper>
-        <StyledName $isHovered={this.state.hovered} className={'guest-name'}>{this.state.guestName}</StyledName>
-      </StyledGuest>
-    )
-  }
+                        }
+                        <img src={this.state.guestImage}
+                             alt={this.state.guestName}
+                             onLoad={() => this.setState({imageLoaded: true})}/>
+                    </StyledWrapper>
+                    <StyledName $isHovered={this.state.hovered}
+                                className={'guest-name'}>{this.state.guestName}</StyledName>
+                </StyledGuest>
+        )
+    }
 }
 
 export default Guest;

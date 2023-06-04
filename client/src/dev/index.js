@@ -4,6 +4,6 @@ import {useInitial} from "./useInitial"
 const ComponentPreviews = lazy(() => import("./previews"))
 
 export {
-	ComponentPreviews,
-	useInitial
+    ComponentPreviews,
+    useInitial,
 }

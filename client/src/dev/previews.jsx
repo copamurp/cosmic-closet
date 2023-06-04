@@ -6,22 +6,22 @@ import Testimonial from "../components/Testimonial";
 import Contact from "../pages/Contact";
 
 const ComponentPreviews = () => {
-	return (
-      <Previews palette={<PaletteTree/>}>
-        <ComponentPreview path="/Nav">
-          <Nav/>
-        </ComponentPreview>
-        <ComponentPreview path="/Guest">
-          <Guest/>
-        </ComponentPreview>
-        <ComponentPreview path="/Testimonial">
-          <Testimonial/>
-        </ComponentPreview>
-        <ComponentPreview path="/Contact">
-          <Contact/>
-        </ComponentPreview>
-      </Previews>
-	)
+    return (
+            <Previews palette={<PaletteTree/>}>
+                <ComponentPreview path="/Nav">
+                    <Nav/>
+                </ComponentPreview>
+                <ComponentPreview path="/Guest">
+                    <Guest/>
+                </ComponentPreview>
+                <ComponentPreview path="/Testimonial">
+                    <Testimonial/>
+                </ComponentPreview>
+                <ComponentPreview path="/Contact">
+                    <Contact/>
+                </ComponentPreview>
+            </Previews>
+    )
 }
 
 export default ComponentPreviews

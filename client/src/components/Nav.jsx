@@ -11,7 +11,7 @@ const NavWrapper = styled.nav`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 0 auto;
+  margin: 0 auto 2rem;
   background: radial-gradient(ellipse at top left, #1a1a1a 10%, #0e0e0e 55%);
 
   .header {
@@ -166,56 +166,81 @@ const StyledNavLink = styled(NavLink)`
 `;
 
 class Nav extends React.Component {
-  render() {
-    return (
-      <NavWrapper>
-        <div className={'header'}>
-          <img className={'header-banner'} src={require('../assets/images/banner.webp')} alt={'The' +
-            ' Cosmic Closet Podcast' +
-            ' Banner'}/>
-          <div className={'header-text'}>
-            <h3 className={'mission-statement'}>Unlock mysteries from the Unseen Realms to Infinite Frontiers -
-              this is the Cosmic Closet Podcast!</h3>
-          </div>
-        </div>
-        <hr/>
-        <div className={'nav'}>
-          <ul className={'page-list'}>
-            <StyledNavLink className={'page-link'} to={'/'}>Home</StyledNavLink>
-            <StyledNavLink className={'page-link'} to={'/about'}>About</StyledNavLink>
-            <StyledNavLink className={'page-link'} to={'/contact'}>Contact</StyledNavLink>
-          </ul>
+    render() {
+        return (
+                <NavWrapper>
+                    <div className={'header'}>
+                        <img className={'header-banner'}
+                             src={require('../assets/images/banner.webp')}
+                             alt={'The' +
+                                     ' Cosmic Closet Podcast' +
+                                     ' Banner'}/>
+                        <div className={'header-text'}>
+                            <h3 className={'mission-statement'}>Unlock mysteries
+                                from the Unseen Realms to Infinite Frontiers -
+                                this is the Cosmic Closet Podcast!</h3>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div className={'nav'}>
+                        <ul className={'page-list'}>
+                            <StyledNavLink className={'page-link'}
+                                           to={'/'}>Home</StyledNavLink>
+                            <StyledNavLink className={'page-link'}
+                                           to={'/about'}>About</StyledNavLink>
+                            <StyledNavLink className={'page-link'}
+                                           to={'/contact'}>Contact</StyledNavLink>
+                        </ul>
 
-          <ul className={'social-list'}>
-            <div className={'spotify-badge'}>
-              <a href={'https://open.spotify.com/show/7s2ljVGvKi30OZ3uR6zWKE'} target={'_blank'}
-                 rel="noreferrer">
-                <SpotifyBadge src={require('../assets/images/Spotify_Logo_CMYK_White.png')} alt={'Spotify' +
-                  ' badge'}/>
-              </a>
-            </div>
+                        <ul className={'social-list'}>
+                            <div className={'spotify-badge'}>
+                                <a href={'https://open.spotify.com/show/7s2ljVGvKi30OZ3uR6zWKE'}
+                                   target={'_blank'}
+                                   rel="noreferrer">
+                                    <SpotifyBadge src={require(
+                                            '../assets/images/Spotify_Logo_CMYK_White.png')}
+                                                  alt={'Spotify' +
+                                                          ' badge'}/>
+                                </a>
+                            </div>
 
-            <div className={'other-badges'}>
-              <SocialLink icon={icon({name: 'youtube', style: 'brands'})}
-                          link={'https://www.youtube.com/@CosmicCloset'} size={'xl'} color={'#FF0000'}
-              />
-              <SocialLink icon={icon({name: 'twitter', style: 'brands'})}
-                          link={'https://twitter.com/cosmic_closet?lang=en'} size={'xl'} color={'#1DA1F2'}
-              />
-              <SocialLink icon={icon({name: 'instagram', style: 'brands'})}
-                          link={'https://www.instagram.com/cosmicclosetpodcast/?hl=en'} size={'xl'}
-                          color={'white'}
-              />
-              <SocialLink icon={icon({name: 'podcast', style: 'regular', family: 'sharp'})}
-                          link={'https://podcasts.apple.com/us/podcast/cosmic-closet-podcast/id1465437814?ign-mpt=uo%3D4'}
-                          size={'xl'} color={'#833AB4'}
-              />
-            </div>
-          </ul>
-        </div>
-      </NavWrapper>
-    )
-  }
+                            <div className={'other-badges'}>
+                                <SocialLink icon={icon({
+                                    name:  'youtube',
+                                    style: 'brands',
+                                })}
+                                            link={'https://www.youtube.com/@CosmicCloset'}
+                                            size={'xl'} color={'#FF0000'}
+                                />
+                                <SocialLink icon={icon({
+                                    name:  'twitter',
+                                    style: 'brands',
+                                })}
+                                            link={'https://twitter.com/cosmic_closet?lang=en'}
+                                            size={'xl'} color={'#1DA1F2'}
+                                />
+                                <SocialLink icon={icon({
+                                    name:  'instagram',
+                                    style: 'brands',
+                                })}
+                                            link={'https://www.instagram.com/cosmicclosetpodcast/?hl=en'}
+                                            size={'xl'}
+                                            color={'white'}
+                                />
+                                <SocialLink icon={icon({
+                                    name:   'podcast',
+                                    style:  'regular',
+                                    family: 'sharp',
+                                })}
+                                            link={'https://podcasts.apple.com/us/podcast/cosmic-closet-podcast/id1465437814?ign-mpt=uo%3D4'}
+                                            size={'xl'} color={'#833AB4'}
+                                />
+                            </div>
+                        </ul>
+                    </div>
+                </NavWrapper>
+        )
+    }
 }
 
 export default Nav;

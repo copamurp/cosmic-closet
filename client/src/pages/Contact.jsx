@@ -147,96 +147,102 @@ const StyledFormControl = styled.div`
 `;
 
 class Contact extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      contactStatus: NETWORK_STATUS.DEFAULT,
-      showContactForm: true,
-      loading: false,
-      randomError: getRandomError(),
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            contactStatus:   NETWORK_STATUS.DEFAULT,
+            showContactForm: true,
+            loading:         false,
+            randomError:     getRandomError(),
+        };
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.sendMail = this.sendMail.bind(this);
-  }
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.sendMail     = this.sendMail.bind(this);
+    }
 
-  handleSubmit = async (event) => {
-    event.preventDefault();
-    this.setState({showContactForm: false, loading: true});
-    this.sendMail({message: "hi"})
-      .then(res => {
-        clearTimeout(res[0]);
-        this.setState({contactStatus: NETWORK_STATUS.GOOD});
-      })
-      .catch(() => {
-        this.setState({contactStatus: NETWORK_STATUS.FAULT});
-      }).finally(() => this.setState({loading: false}));
-  }
+    handleSubmit = async (event) => {
+        event.preventDefault();
+        this.setState({
+            showContactForm: false,
+            loading:         true,
+        });
+        this.sendMail({message: "hi"})
+                .then(res => {
+                    clearTimeout(res[0]);
+                    this.setState({contactStatus: NETWORK_STATUS.GOOD});
+                })
+                .catch(() => {
+                    this.setState({contactStatus: NETWORK_STATUS.FAULT});
+                }).finally(() => this.setState({loading: false}));
+    }
 
-  sendMail = async ({message}) => {
-    this.setState({loading: true});
+    sendMail = async ({message}) => {
+        this.setState({loading: true});
 
-    await timeout(3500);
+        await timeout(3500);
 
-    return message;
-  }
+        return message;
+    }
 
-  render() {
-    return (
-      <StyledContact>
-        <h1>Contact Us</h1>
-        {this.state.showContactForm ?
-          <div className={'form-wrapper'}>
-            <form className={'contact-form'} onSubmit={this.handleSubmit}>
-              <StyledFormControl>
-                <div className={'wrapper'}>
-                  <label>First Name</label>
-                  <input type={'text'}/>
-                </div>
-              </StyledFormControl>
+    render() {
+        return (
+                <StyledContact>
+                    <h1>Contact Us</h1>
+                    {this.state.showContactForm ?
+                            <div className={'form-wrapper'}>
+                                <form className={'contact-form'}
+                                      onSubmit={this.handleSubmit}>
+                                    <StyledFormControl>
+                                        <div className={'wrapper'}>
+                                            <label>First Name</label>
+                                            <input type={'text'}/>
+                                        </div>
+                                    </StyledFormControl>
 
-              <StyledFormControl>
-                <div className={'wrapper'}>
-                  <label>Last Name</label>
-                  <input type={'text'}/>
-                </div>
-              </StyledFormControl>
+                                    <StyledFormControl>
+                                        <div className={'wrapper'}>
+                                            <label>Last Name</label>
+                                            <input type={'text'}/>
+                                        </div>
+                                    </StyledFormControl>
 
-              <StyledFormControl>
-                <div className={'wrapper'}>
-                  <label>E-mail</label>
-                  <input type={'text'}/>
-                </div>
-              </StyledFormControl>
+                                    <StyledFormControl>
+                                        <div className={'wrapper'}>
+                                            <label>E-mail</label>
+                                            <input type={'text'}/>
+                                        </div>
+                                    </StyledFormControl>
 
-              <StyledFormControl>
-                <div className={'wrapper'}>
-                  <label>Message</label>
-                  <textarea/>
-                </div>
-              </StyledFormControl>
+                                    <StyledFormControl>
+                                        <div className={'wrapper'}>
+                                            <label>Message</label>
+                                            <textarea/>
+                                        </div>
+                                    </StyledFormControl>
 
-              <div className={'submit-wrapper'}>
-                <input type={'submit'} value={'Submit'}/>
-              </div>
-            </form>
-          </div>
-          :
-          <>
-            {this.state.loading ?
-              <Loading/>
-              :
-              <ErrorDisplay error={this.state.randomError}/>
-            }
-          </>
-        }
-      </StyledContact>
-    )
-  }
+                                    <div className={'submit-wrapper'}>
+                                        <input type={'submit'}
+                                               value={'Submit'}/>
+                                    </div>
+                                </form>
+                            </div>
+                            :
+                            <>
+                                {this.state.loading ?
+                                        <Loading/>
+                                        :
+                                        <ErrorDisplay
+                                                error={this.state.randomError}/>
+                                }
+                            </>
+                    }
+                </StyledContact>
+        )
+    }
 }
 
 function timeout(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 export default Contact;
