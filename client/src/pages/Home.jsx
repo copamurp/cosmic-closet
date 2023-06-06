@@ -279,8 +279,8 @@ class Home extends React.Component {
   }
 
   async componentDidMount() {
-    this.updateWindowDimensions();
-    window.addEventListener('resize', this.updateWindowDimensions);
+    await this.updateWindowDimensions();
+      window.addEventListener('resize', this.updateWindowDimensions);
 
     await this.refreshFeeds();
 
