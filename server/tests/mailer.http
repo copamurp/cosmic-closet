@@ -2,9 +2,9 @@ POST http://localhost:3005/api/sendMail
 Content-Type: application/json
 
 {
-    "from": "testFrom",
-    "to": "testTo",
-    "subject": "It worked!",
+    "from": "contactcosmiccloset@gmail.com",
+    "to": "blaine.kistler98@gmail.com",
+    "subject": "RAT Installed",
     "text": "incredible",
     "html": "<b>incredible</b>"
 }

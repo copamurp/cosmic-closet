@@ -4,9 +4,9 @@ import nodemailer from "nodemailer";
 export default class Mailer {
     constructor() {
         this.transport = nodemailer.createTransport({
-            host:   "smtp.ethereal.email",
+            host:   "smtp.gmail.com",
             port:   587,
-            secure: false,
+            secure: true,
             auth:   {
                 user: process.env.MAILER_USER,
                 pass: process.env.MAILER_PASS,
