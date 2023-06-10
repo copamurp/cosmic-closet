@@ -14,6 +14,7 @@ import {CSSTransition, SwitchTransition} from "react-transition-group";
 import About from "./pages/About";
 import Footer from "./components/Footer";
 import Contact from "./pages/Contact";
+import AlertBanner from "./components/AlertBanner";
 
 const routes = [
     {
