@@ -4,17 +4,18 @@ import Guest from "../components/Guest";
 import Loading from "../components/Loading";
 
 const StyledAbout = styled.div`
-    min-height: 80vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    padding-top: 4rem;
-    box-shadow: 0 -1rem 1rem rgba(0, 0, 0, 0.5) inset;
+  min-height: 80vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding-top: 4rem;
+  background: radial-gradient(circle at top right, #1a1a1a 5%, #101010 75%);
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.5) inset;
 
-    .about-intro {
-        display: flex;
+  .about-intro {
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
