@@ -11,7 +11,7 @@ const StyledGuest = styled.a`
   align-items: center;
   justify-content: center;
   transform: scale(1);
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out, text-shadow 0.5s ease-in-out;
   cursor: pointer;
   margin: 4rem;
 
@@ -20,7 +20,8 @@ const StyledGuest = styled.a`
   }
 
   :hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
+    text-shadow: 0 0 90px #ffffff;
   }
 `;
 
