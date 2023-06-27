@@ -14,267 +14,267 @@ import NETWORK_STATUS from "../config.js";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 const StyledHome = styled.div`
+  width: 100%;
+  background-image: url(${require("../assets/images/home/orbit.webp")});
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  min-height: 80vh;
+
+  .feed-wrapper {
+    padding: 2rem;
+  }
+
+  .intro {
     width: 100%;
-    background-image: url(${require("../assets/images/home/orbit.webp")});
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    min-height: 80vh;
+    background-color: #0e0e0e;
+    box-shadow: 0 -1rem 1rem rgba(0, 0, 0, 0.5) inset;
 
-    .feed-wrapper {
-        padding: 2rem;
+    > div {
+      background-color: transparent;
+      width: 100%;
+      max-width: 1800px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 2rem auto;
+
+      h1 {
+        text-align: center;
+        color: #ffffff;
+        font-size: 2rem;
+        font-size: clamp(2rem, 1.8rem + 0.75vw, 3rem);
+        font-weight: 600;
+      }
     }
+  }
 
-    .intro {
-        width: 100%;
-        background-color: #0e0e0e;
-        box-shadow: 0 -1rem 1rem rgba(0, 0, 0, 0.5) inset;
+  .content {
+    width: 100%;
+    background-color: transparent;
 
-        > div {
-            background-color: transparent;
-            width: 100%;
-            max-width: 1800px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 2rem auto;
+    > div {
+      width: 100%;
+      margin: 0 auto;
+      max-width: 1800px;
+      padding: 2rem 0;
 
-            h1 {
-                text-align: center;
-                color: #ffffff;
-                font-size: 2rem;
-                font-size: clamp(2rem, 1.8rem + 0.75vw, 3rem);
-                font-weight: 600;
-            }
-        }
-    }
-
-    .content {
-        width: 100%;
-        background-color: transparent;
-
-        > div {
-            width: 100%;
-            margin: 0 auto;
-            max-width: 1800px;
-            padding: 2rem 0;
-
-            .socials-intro {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                width: 80%;
-                margin: 0 auto;
-                margin-bottom: 4rem;
-
-                h2 {
-                    text-align: center;
-                    color: #5B5AA8;
-                    font-size: 2rem;
-                    font-size: clamp(2rem, 1.8rem + 0.75vw, 3rem);
-                    font-weight: 600;
-                    margin-bottom: 1rem;
-                }
-
-                p {
-                    color: #ffffff;
-                    font-size: 1.25rem;
-                    font-weight: 200;
-                    line-height: 1.5;
-                    text-align: center;
-                }
-            }
-        }
-
-        .socials-big {
-            display: flex;
-            align-items: center;
-            justify-content: space-evenly;
-            width: 75%;
-            margin: 2rem auto;
-
-            @media only screen and (max-width: 768px) {
-                width: 100%;
-                margin-bottom: 6rem;
-            }
-        }
-
-        .feed-wrapper {
-            width: 100%;
-            max-width: 1800px;
-            display: flex;
-            align-items: stretch;
-            justify-content: space-evenly;
-
-            @media only screen and (max-width: 1100px) {
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .media {
-                border-radius: 1rem;
-                background-color: rgba(67, 67, 67, 0.4);
-                box-shadow: 0 0 4px 1px #ffffff;
-                padding: 1rem;
-            }
-
-            .video-wrapper {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-
-                @media only screen and (max-width: 1100px) {
-                    margin-bottom: 2rem;
-                }
-            }
-
-            .twitter-wrapper {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-    }
-
-    .testimonials {
-        background: radial-gradient(ellipse at bottom, #5B5AA8 25%, #4f4ddf 100%);
-        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5) inset;
+      .socials-intro {
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: space-evenly;
-        width: 100%;
-        padding: 2rem 0;
+        justify-content: center;
+        width: 80%;
+        margin: 0 auto;
+        margin-bottom: 4rem;
 
         h2 {
-            font-size: 2rem;
-            font-size: clamp(2rem, 1.8rem + 0.75vw, 3rem);
-            font-weight: 600;
-            justify-self: flex-start;
+          text-align: center;
+          color: #5B5AA8;
+          font-size: 2rem;
+          font-size: clamp(2rem, 1.8rem + 0.75vw, 3rem);
+          font-weight: 600;
+          margin-bottom: 1rem;
         }
 
-        .testimonials-wrapper {
-            position: relative;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-evenly;
-
-            @media only screen and (max-width: 768px) {
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .carousel-wrapper {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-
-                @media only screen and (max-width: 768px) {
-                    width: 100%;
-                    height: 550px;
-                    align-items: flex-start;
-                    justify-content: center;
-                }
-            }
-
-            > button {
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-                width: 3rem;
-                height: 3rem;
-                border-radius: 50%;
-                color: #ffffff;
-                background-color: transparent;
-                cursor: pointer;
-                transition: all 0.2s ease-in-out;
-
-                :disabled {
-                    cursor: not-allowed;
-                    color: #4a4a4a;
-                    box-shadow: 0 0 2px 0 #5B5AA8;
-                }
-
-                &:hover:not(:disabled) {
-                    transform: translateY(-50%) scale(1.1);
-                    color: #ffffff;
-                    background-color: #5B5AA8;
-                    box-shadow: 0 0 4px 1px #ffffff;
-                }
-
-                @media only screen and (max-width: 768px) {
-                    top: 80%;
-                    transform: translateY(80%);
-
-                    &:hover:not(:disabled) {
-                        transform: translateY(80%) scale(1.1);
-                    }
-                }
-            }
-
-            .carousel-button-prev {
-                left: 1rem;
-
-                @media only screen and (max-width: 768px) {
-                    left: 10%;
-                }
-            }
-
-            .carousel-button-next {
-                right: 1rem;
-
-                @media only screen and (max-width: 768px) {
-                    right: 10%;
-                }
-            }
+        p {
+          color: #ffffff;
+          font-size: 1.25rem;
+          font-weight: 200;
+          line-height: 1.5;
+          text-align: center;
         }
+      }
     }
+
+    .socials-big {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      width: 75%;
+      margin: 2rem auto;
+
+      @media only screen and (max-width: 768px) {
+        width: 100%;
+        margin-bottom: 6rem;
+      }
+    }
+
+    .feed-wrapper {
+      width: 100%;
+      max-width: 1800px;
+      display: flex;
+      align-items: stretch;
+      justify-content: space-evenly;
+
+      @media only screen and (max-width: 1100px) {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .media {
+        border-radius: 1rem;
+        background-color: rgba(67, 67, 67, 0.4);
+        box-shadow: 0 0 4px 1px #ffffff;
+        padding: 1rem;
+      }
+
+      .video-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        @media only screen and (max-width: 1100px) {
+          margin-bottom: 2rem;
+        }
+      }
+
+      .twitter-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  }
+
+  .testimonials {
+    background: radial-gradient(ellipse at bottom, #5B5AA8 25%, #4f4ddf 100%);
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5) inset;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    padding: 2rem 0;
+
+    h2 {
+      font-size: 2rem;
+      font-size: clamp(2rem, 1.8rem + 0.75vw, 3rem);
+      font-weight: 600;
+      justify-self: flex-start;
+    }
+
+    .testimonials-wrapper {
+      position: relative;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+
+      @media only screen and (max-width: 768px) {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .carousel-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        @media only screen and (max-width: 768px) {
+          width: 100%;
+          height: 550px;
+          align-items: flex-start;
+          justify-content: center;
+        }
+      }
+
+      > button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        color: #ffffff;
+        background-color: transparent;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+
+        :disabled {
+          cursor: not-allowed;
+          color: #4a4a4a;
+          box-shadow: 0 0 2px 0 #5B5AA8;
+        }
+
+        &:hover:not(:disabled) {
+          transform: translateY(-50%) scale(1.1);
+          color: #ffffff;
+          background-color: #5B5AA8;
+          box-shadow: 0 0 4px 1px #ffffff;
+        }
+
+        @media only screen and (max-width: 768px) {
+          top: 80%;
+          transform: translateY(80%);
+
+          &:hover:not(:disabled) {
+            transform: translateY(80%) scale(1.1);
+          }
+        }
+      }
+
+      .carousel-button-prev {
+        left: 1rem;
+
+        @media only screen and (max-width: 768px) {
+          left: 10%;
+        }
+      }
+
+      .carousel-button-next {
+        right: 1rem;
+
+        @media only screen and (max-width: 768px) {
+          right: 10%;
+        }
+      }
+    }
+  }
 `;
 
 class Home extends React.Component {
     constructor(props) {
         super(props);
-        this.state                  = {
-            height:              0,
-            width:               0,
-            feedWidth:           '300px',
-            feedHeight:          '300px',
-            youtube:             null,
-            youtubeLoading:      true,
-            tweetsLoading:       true,
-            tweetTimeline:       null,
-            testimonials:        [],
+        this.state = {
+            height: 0,
+            width: 0,
+            feedWidth: '300px',
+            feedHeight: '300px',
+            youtube: null,
+            youtubeLoading: true,
+            tweetsLoading: true,
+            tweetTimeline: null,
+            testimonials: [],
             testimonialsLoading: false,
-            testimonialsStatus:  NETWORK_STATUS.DEFAULT,
-            carouselDisabled:    false,
-            randomError:         getRandomError(),
+            testimonialsStatus: NETWORK_STATUS.DEFAULT,
+            carouselDisabled: false,
+            randomError: getRandomError(),
         };
-        this.carouselRef            = React.createRef();
+        this.carouselRef = React.createRef();
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
-        this.refreshFeeds           = this.refreshFeeds.bind(this);
+        this.refreshFeeds = this.refreshFeeds.bind(this);
     }
 
     updateWindowDimensions = async () => {
         const updateDims = async () => {
             await this.setState({
-                width:  window.innerWidth,
+                width: window.innerWidth,
                 height: window.innerHeight,
             });
         };
 
         await updateDims().then(() => {
             this.setState({
-                feedWidth:  this.state.width > 800
-                                    ? 800
-                                    : this.state.width - 96,
+                feedWidth: this.state.width > 800
+                    ? 800
+                    : this.state.width - 96,
                 feedHeight: this.state.height * 0.2,
             });
         });
@@ -290,38 +290,38 @@ class Home extends React.Component {
             return await new Promise((resolve, reject) => {
                 const controller = new AbortController();
                 fetch("/api/testimonials", {signal: controller.signal})
-                        .then(res => res.json())
-                        .then(data => {
-                            this.setState({
-                                testimonials: (data.map(testimonial => {
-                                    return <Testimonial
-                                            name={testimonial.name}
-                                            quote={testimonial.quote}
-                                            rating={testimonial.rating}
-                                            date={testimonial.date}
-                                    />
-                                })),
-                            });
-                        })
-                        .then(() => {
-                            resolve(NETWORK_STATUS.GOOD);
-                        })
-                        .catch((err) => {
-                            console.log(err);
-                            reject(NETWORK_STATUS.FAULT);
+                    .then(res => res.json())
+                    .then(data => {
+                        this.setState({
+                            testimonials: (data.map(testimonial => {
+                                return <Testimonial
+                                    name={testimonial.name}
+                                    quote={testimonial.quote}
+                                    rating={testimonial.rating}
+                                    date={testimonial.date}
+                                />
+                            })),
                         });
+                    })
+                    .then(() => {
+                        resolve(NETWORK_STATUS.GOOD);
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                        reject(NETWORK_STATUS.FAULT);
+                    });
             });
         }
 
         await loadTestimonials().then(res => {
             this.setState({
                 testimonialsStatus: res,
-                carouselDisabled:   false,
+                carouselDisabled: false,
             });
         }).catch(err => {
             this.setState({
                 testimonialsStatus: err,
-                carouselDisabled:   true,
+                carouselDisabled: true,
             });
         });
     }
@@ -334,7 +334,7 @@ class Home extends React.Component {
         if (prevState.feedWidth !== this.state.feedWidth) {
             this.refreshFeeds().then(() => {
                 this.setState({
-                    tweetsLoading:  false,
+                    tweetsLoading: false,
                     youtubeLoading: false,
                 });
             });
@@ -344,72 +344,68 @@ class Home extends React.Component {
     refreshFeeds = async () => {
         this.setState({
             tweetTimeline: <Timeline
-                                   renderError={_err => {
-                                       return (<div
-                                               style={{
-                                                   color:          'white',
-                                                   display:        'flex',
-                                                   flexDirection:  'column',
-                                                   alignItems:     'center',
-                                                   justifyContent: 'space-evenly',
-                                                   textAlign:      'center',
-                                                   width:          this.state.feedWidth,
-                                                   height:         this.state.feedHeight,
-                                                   fontSize:       '2rem',
-                                               }}
-                                       >
-                                           <FontAwesomeIcon
-                                                   icon={icon({
-                                                       name:   'robot',
-                                                       style:  'light',
-                                                       family: 'classic',
-                                                   })}
-                                                   size={'2x'}
-                                                   style={{marginBottom: '2rem'}}
-                                           />
-                                           get tweets failed
-                                       </div>)
-                                   }}
-                                   dataSource={{
-                                       sourceType: 'profile',
-                                       screenName: 'Cosmic_Closet',
-                                   }}
-                                   options={{
-                                       height: this.state.feedHeight > 500
-                                                       ? this.state.feedHeight
-                                                       : 500,
-                                       width:  this.state.feedWidth,
-                                       theme:  'dark',
-                                   }}
-                           />,
-            youtube:       <YouTube
-                                   videoId="cNmRmVr9ObU"
-                                   opts={{
-                                       height: this.state.feedHeight > 300
-                                                       ? this.state.feedHeight
-                                                       : 300,
-                                       width:  this.state.feedWidth < 800
-                                                       ? this.state.feedWidth
-                                                       : 800,
-                                   }}
-                                   style={{
-                                       width: this.state.feedWidth < 800
-                                                      ? this.state.feedWidth
-                                                      : 800,
-                                   }}
-                           />,
+                renderError={_err => {
+                    return (<div
+                        style={{
+                            color: 'white',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            justifyContent: 'space-evenly',
+                            textAlign: 'center',
+                            width: this.state.feedWidth,
+                            height: this.state.feedHeight,
+                            fontSize: '2rem',
+                        }}
+                    >
+                        <FontAwesomeIcon
+                            icon={icon({
+                                name: 'robot',
+                                style: 'light',
+                                family: 'classic',
+                            })}
+                            size={'2x'}
+                            style={{marginBottom: '2rem'}}
+                        />
+                        get tweets failed
+                    </div>)
+                }}
+                dataSource={{
+                    sourceType: 'profile',
+                    screenName: 'Cosmic_Closet',
+                }}
+                options={{
+                    height: this.state.feedHeight > 500
+                        ? this.state.feedHeight
+                        : 500,
+                    width: this.state.feedWidth,
+                    theme: 'dark',
+                }}
+            />,
+            youtube: <YouTube
+                videoId="heqAQT3o1DI"
+                opts={{
+                    height: this.state.feedHeight > 400
+                        ? this.state.feedHeight
+                        : 400,
+                    width: this.state.feedWidth < 800
+                        ? this.state.feedWidth
+                        : 800,
+                }}
+                style={{
+                    width: this.state.feedWidth < 800
+                        ? this.state.feedWidth
+                        : 800,
+                }}
+            />,
         });
     }
 
-    handleCarousel = (direction) => {
-        console.log(direction);
-    }
-
     render() {
-        const youtubeFeedLoading     = this.state.youtubeLoading;
-        const tweetsAreLoading       = this.state.tweetsLoading;
+        const youtubeFeedLoading = this.state.youtubeLoading;
+        const tweetsAreLoading = this.state.tweetsLoading;
         const testimonialsAreLoading = this.state.testimonialsLoading;
-        const testimonialsStatus     = this.state.testimonialsStatus;
+        const testimonialsStatus = this.state.testimonialsStatus;
 
         let youtubeFeed;
         let tweetFeed;
@@ -418,7 +414,7 @@ class Home extends React.Component {
 
         if (youtubeFeedLoading) {
             youtubeFeed = <Loading style={{
-                width:  this.state.feedWidth,
+                width: this.state.feedWidth,
                 height: this.state.feedHeight,
             }}/>;
         } else {
@@ -427,7 +423,7 @@ class Home extends React.Component {
 
         if (tweetsAreLoading) {
             tweetFeed = <Loading style={{
-                width:  this.state.feedWidth,
+                width: this.state.feedWidth,
                 height: this.state.feedHeight,
             }}/>;
         } else {
@@ -436,30 +432,30 @@ class Home extends React.Component {
 
         if (testimonialsAreLoading) {
             testimonialFeed = <Loading style={{
-                width:  this.state.feedWidth,
+                width: this.state.feedWidth,
                 height: this.state.feedHeight,
             }}/>;
-            carousel        = <Carousel ref={this.carouselRef}
-                                        className={'testimonials-carousel'}
-                                        showThumbs={false} showStatus={false}
-                                        items={testimonialFeed}></Carousel>;
+            carousel = <Carousel ref={this.carouselRef}
+                                 className={'testimonials-carousel'}
+                                 showThumbs={false} showStatus={false}
+                                 items={testimonialFeed}></Carousel>;
         } else {
             if (testimonialsStatus === NETWORK_STATUS.GOOD) {
                 testimonialFeed = this.state.testimonials;
-                carousel        = <Carousel ref={this.carouselRef}
-                                            className={'testimonials-carousel'}
-                                            showThumbs={false}
-                                            showStatus={false}
-                                            items={testimonialFeed}></Carousel>;
+                carousel = <Carousel ref={this.carouselRef}
+                                     className={'testimonials-carousel'}
+                                     showThumbs={false}
+                                     showStatus={false}
+                                     items={testimonialFeed}></Carousel>;
             } else {
                 testimonialFeed = [
                     <ErrorDisplay error={this.state.randomError}/>,
                 ];
-                carousel        = <Carousel ref={this.carouselRef}
-                                            className={'testimonials-carousel'}
-                                            showThumbs={false}
-                                            showStatus={false}
-                                            items={testimonialFeed}></Carousel>;
+                carousel = <Carousel ref={this.carouselRef}
+                                     className={'testimonials-carousel'}
+                                     showThumbs={false}
+                                     showStatus={false}
+                                     items={testimonialFeed}></Carousel>;
             }
         }
 
@@ -496,29 +492,29 @@ class Home extends React.Component {
 
                     <div className={'socials-big'}>
                         <SocialLink icon={icon({
-                            name:  'youtube',
+                            name: 'youtube',
                             style: 'brands',
                         })}
                                     link={'https://www.youtube.com/@CosmicCloset'}
                                     size={'4x'} color={'#FF0000'}
                         />
                         <SocialLink icon={icon({
-                            name:  'twitter',
+                            name: 'twitter',
                             style: 'brands',
                         })}
                                     link={'https://twitter.com/cosmic_closet?lang=en'}
                                     size={'4x'} color={'#1DA1F2'}
                         />
                         <SocialLink icon={icon({
-                            name:  'instagram',
+                            name: 'instagram',
                             style: 'brands',
                         })}
                                     link={'https://www.instagram.com/cosmicclosetpodcast/?hl=en'}
                                     size={'4x'} color={'white'}
                         />
                         <SocialLink icon={icon({
-                            name:   'podcast',
-                            style:  'regular',
+                            name: 'podcast',
+                            style: 'regular',
                             family: 'sharp',
                         })}
                                     link={'https://podcasts.apple.com/us/podcast/cosmic-closet-podcast/id1465437814?ign-mpt=uo%3D4'}
@@ -544,7 +540,7 @@ class Home extends React.Component {
                                 this.carouselRef.current.prevSlide()
                             }}>
                         <FontAwesomeIcon icon={icon({
-                            name:  'chevron-left',
+                            name: 'chevron-left',
                             style: 'solid',
                         })} size={'2x'}/>
                     </button>
@@ -559,7 +555,7 @@ class Home extends React.Component {
                                 this.carouselRef.current.nextSlide()
                             }}>
                         <FontAwesomeIcon icon={icon({
-                            name:  'chevron-right',
+                            name: 'chevron-right',
                             style: 'solid',
                         })} size={'2x'}/>
                     </button>
