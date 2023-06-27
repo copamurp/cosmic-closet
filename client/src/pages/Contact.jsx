@@ -238,14 +238,14 @@ class Contact extends React.Component {
             showContactForm: false,
             loading: true,
         })
-        this.sendMail({message: 'hi'})
-            .then(res => {
-                clearTimeout(res[0])
-                this.setState({contactStatus: NETWORK_STATUS.GOOD})
-            })
-            .catch(() => {
-                this.setState({contactStatus: NETWORK_STATUS.FAULT})
-            }).finally(() => this.setState({loading: false}))
+        // this.sendMail({message: 'hi'})
+        //     .then(res => {
+        //         clearTimeout(res[0])
+        //         this.setState({contactStatus: NETWORK_STATUS.GOOD})
+        //     })
+        //     .catch(() => {
+        //         this.setState({contactStatus: NETWORK_STATUS.FAULT})
+        //     }).finally(() => this.setState({loading: false}))
     }
 
     sendMail = async ({message}) => {
