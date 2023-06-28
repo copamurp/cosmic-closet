@@ -9,11 +9,7 @@ const StyledContact = styled.div`
   width: 100%;
 
   h1 {
-    text-align: center;
     color: #ffffff;
-    font-size: 2rem;
-    font-size: clamp(2rem, 1.8rem + 0.75vw, 3rem);
-    font-weight: 600;
     margin: 2rem 0;
   }
 
@@ -22,7 +18,6 @@ const StyledContact = styled.div`
     width: 100%;
     margin: 0 auto;
     padding: 1rem;
-    min-height: 60vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -40,19 +35,19 @@ const StyledContact = styled.div`
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    justify-content: space-evenly;
+    justify-content: center;
 
     @media only screen and (max-width: 768px) {
-      flex-direction: column;
+      width: 100%;
     }
 
     .info-container {
-      width: 50%;
+      width: 100%;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
       align-items: stretch;
-      justify-content: space-evenly;
+        justify-content: space-evenly;
 
       @media only screen and (max-width: 768px) {
         margin: 0 auto;
@@ -77,7 +72,7 @@ const StyledContact = styled.div`
     }
 
     .message-container {
-      width: 80%;
+      width: 100%;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
@@ -100,8 +95,9 @@ const StyledContact = styled.div`
   }
 
   input[type='submit'] {
-    padding: 1rem;
-    margin-top: 1rem;
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto;
     padding: 1rem 2rem;
     background-color: #202020;
     color: #ffffff;
@@ -130,13 +126,34 @@ const StyledFormControl = styled.div`
     font-weight: 200;
     margin-bottom: 0.25rem;
 
+    &.required::after {
+      content: ' *';
+      color: #ff0000;
+    }
+
     @media only screen and (max-width: 768px) {
       font-size: 1rem;
+    }
+  }
 
-      &::after {
-        content: '*';
-        color: #ff0000;
-      }
+  input, textarea {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    font-weight: 200;
+    border: 1px solid #4f4ddf;
+    border-radius: 0.25rem;
+    background-color: #202020;
+    color: #ffffff;
+    transition: border-color 0.5s ease-in-out;
+
+    :hover {
+      border-color: #ffffff;
+    }
+
+    :focus {
+      outline: none;
+      border-color: #ffffff;
     }
   }
 
@@ -154,26 +171,6 @@ const StyledFormControl = styled.div`
 
     @media only screen and (max-width: 768px) {
       padding: 1rem;
-    }
-
-    input {
-      width: 100%;
-      padding: 0.5rem;
-      font-size: 1rem;
-      font-weight: 200;
-      border: 1px solid #4f4ddf;
-      border-radius: 0.25rem;
-      background-color: #202020;
-      color: #ffffff;
-      transition: border-color 0.5s ease-in-out;
-
-      :hover {
-        border-color: #ffffff;
-      }
-
-      :focus {
-        outline: none;
-      }
     }
   }
 
@@ -196,16 +193,7 @@ const StyledFormControl = styled.div`
 
     textarea {
       resize: none;
-      width: 100%;
       height: 100%;
-      padding: 0.5rem;
-      font-size: 1rem;
-      font-weight: 200;
-      border: 1px solid #4f4ddf;
-      border-radius: 0.25rem;
-      background-color: #202020;
-      color: #ffffff;
-      transition: border-color 0.5s ease-in-out;
       min-height: 200px;
     }
   }
@@ -233,11 +221,15 @@ class Contact extends React.Component {
     }
 
     handleSubmit = async (event) => {
-        event.preventDefault()
-        this.setState({
-            showContactForm: false,
-            loading: true,
-        })
+        event.preventDefault();
+        alert('We apologize, but we currently are not accepting contact form submissions.');
+        // ** Uncomment to enable submission **
+        // this.setState({
+        //     showContactForm: false,
+        //     loading: true,
+        // })
+
+        // ** Uncomment to test mail API **
         // this.sendMail({message: 'hi'})
         //     .then(res => {
         //         clearTimeout(res[0])
@@ -267,21 +259,21 @@ class Contact extends React.Component {
                             <div className={'info-container'}>
                                 <StyledFormControl>
                                     <div className={'wrapper'}>
-                                        <label>First Name</label>
+                                        <label className={'required'}>First Name</label>
+                                        <input type={'text'} autoFocus={true}/>
+                                    </div>
+                                </StyledFormControl>
+
+                                <StyledFormControl>
+                                    <div className={'wrapper'}>
+                                        <label className={'required'}>Last Name</label>
                                         <input type={'text'}/>
                                     </div>
                                 </StyledFormControl>
 
                                 <StyledFormControl>
                                     <div className={'wrapper'}>
-                                        <label>Last Name</label>
-                                        <input type={'text'}/>
-                                    </div>
-                                </StyledFormControl>
-
-                                <StyledFormControl>
-                                    <div className={'wrapper'}>
-                                        <label>E-mail</label>
+                                        <label className={'required'}>E-mail</label>
                                         <input type={'text'}/>
                                     </div>
                                 </StyledFormControl>
@@ -290,21 +282,21 @@ class Contact extends React.Component {
                             <div className={'message-container'}>
                                 <StyledFormControl id={'message'}>
                                     <div className={'message'}>
-                                        <label>Message</label>
+                                        <label className={'required'}>Message</label>
                                         <textarea/>
                                     </div>
                                 </StyledFormControl>
                             </div>
+
+                            <input type={'submit'}
+                                   value={'Submit'}
+                                   onSubmit={this.handleSubmit}/>
                         </form>
-
-                        <input type={'submit'}
-                               value={'Submit'}/>
                     </div>
-
                     :
                     <>
                         {this.state.loading ?
-                            <Loading/>
+                            <Loading style={{minHeight: '60vh'}}/>
                             :
                             <ErrorDisplay
                                 error={this.state.randomError}/>
