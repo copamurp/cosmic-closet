@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import Testimonial from "./Testimonial";
 import {CSSTransition, SwitchTransition} from "react-transition-group";
 
 const StyledCarousel = styled.div`
