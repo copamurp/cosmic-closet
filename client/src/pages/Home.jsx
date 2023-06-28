@@ -23,7 +23,6 @@ const StyledHome = styled.div`
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  min-height: 80vh;
 
   .feed-wrapper {
     padding: 2rem;
@@ -42,14 +41,6 @@ const StyledHome = styled.div`
       align-items: center;
       justify-content: center;
       margin: 2rem auto;
-
-      h1 {
-        text-align: center;
-        color: #ffffff;
-        font-size: 2rem;
-        font-size: clamp(2rem, 1.8rem + 0.75vw, 3rem);
-        font-weight: 600;
-      }
     }
   }
 
@@ -72,21 +63,9 @@ const StyledHome = styled.div`
         margin: 0 auto;
         margin-bottom: 4rem;
 
-        h2 {
-          text-align: center;
+        > h1 {
           color: #5B5AA8;
-          font-size: 2rem;
-          font-size: clamp(2rem, 1.8rem + 0.75vw, 3rem);
-          font-weight: 600;
           margin-bottom: 1rem;
-        }
-
-        p {
-          color: #ffffff;
-          font-size: 1.25rem;
-          font-weight: 200;
-          line-height: 1.5;
-          text-align: center;
         }
       }
     }
@@ -152,10 +131,7 @@ const StyledHome = styled.div`
     width: 100%;
     padding: 2rem 0;
 
-    h2 {
-      font-size: 2rem;
-      font-size: clamp(2rem, 1.8rem + 0.75vw, 3rem);
-      font-weight: 600;
+    > h1 {
       justify-self: flex-start;
     }
 
@@ -191,7 +167,7 @@ const StyledHome = styled.div`
         transform: translateY(-50%);
         width: 3rem;
         height: 3rem;
-        border-radius: 50%;
+        border: none;
         color: #ffffff;
         background-color: transparent;
         cursor: pointer;
@@ -459,7 +435,8 @@ class Home extends React.Component {
             }
         }
 
-        return (<StyledHome>
+        return (
+            <StyledHome>
             <div className={'intro feed-wrapper'}>
                 <div>
                     <ExternalMediaWrapper media={youtubeFeed}
@@ -471,8 +448,8 @@ class Home extends React.Component {
             <div className={'content'}>
                 <div>
                     <div className={'socials-intro'}>
-                        <h2>Find us on your favorite podcast
-                            platform</h2>
+                        <h1>Find us on your favorite podcast
+                            platform</h1>
                         <p>
                             From the paranormal to conspiracy theories,
                             we have new episodes every week! Our goal is
@@ -531,7 +508,7 @@ class Home extends React.Component {
             </div>
 
             <div className={'testimonials'}>
-                <h2>Testimonials</h2>
+                <h1>Testimonials</h1>
 
                 <div className={'testimonials-wrapper'}>
                     <button disabled={this.state.carouselDisabled}
