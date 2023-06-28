@@ -21,11 +21,7 @@ const StyledAbout = styled.div`
     justify-content: center;
 
     h1 {
-      text-align: center;
       color: #5B5AA8;
-      font-size: 2rem;
-      font-size: clamp(2rem, 1.8rem + 0.75vw, 3rem);
-      font-weight: 600;
       margin-bottom: 2rem;
     }
   }
@@ -41,11 +37,6 @@ const StyledAbout = styled.div`
     max-width: 1800px;
 
     p {
-      text-align: center;
-      color: #ffffff;
-      font-size: 1.25rem;
-      font-weight: 200;
-
       @media only screen and (max-width: 768px) {
         font-size: 1rem;
         line-height: 1.75rem;
