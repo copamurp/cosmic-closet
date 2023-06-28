@@ -144,8 +144,8 @@ class Footer extends React.Component {
                     <div className={'meta'}>
                         <div className={'cosmic-closet'}>
                             <img src={logo}
-                                 alt={'The Cosmic Closet Podcast logo'}/>
-                            <p>The Cosmic Closet Podcast</p>
+                                 alt={'Cosmic Closet Podcast.'}/>
+                            <p>Cosmic Closet Podcast</p>
                         </div>
 
                         <p>contactcosmiccloset@gmail.com</p>

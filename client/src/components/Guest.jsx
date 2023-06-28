@@ -96,7 +96,7 @@ class Guest extends React.Component {
           </span>
                         }
                         <img src={this.state.guestImage}
-                             alt={this.state.guestName}
+                             alt={`A portrait of ${this.state.guestName}`}
                              onLoad={() => this.setState({imageLoaded: true})}/>
                     </StyledWrapper>
                     <StyledName $isHovered={this.state.hovered}

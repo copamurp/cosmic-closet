@@ -182,9 +182,7 @@ class Nav extends React.Component {
                     <div className={'header'}>
                         <img className={'header-banner'}
                              src={require('../assets/images/banner.webp')}
-                             alt={'The' +
-                                     ' Cosmic Closet Podcast' +
-                                     ' Banner'}/>
+                             alt={'Cosmic Closet Podcast.'}/>
                         <div className={'header-text'}>
                             <h3 className={'mission-statement'}>Unlock mysteries
                                 from the Unseen Realms to Infinite Frontiers -
@@ -209,8 +207,7 @@ class Nav extends React.Component {
                                    rel="noreferrer">
                                     <SpotifyBadge src={require(
                                             '../assets/images/Spotify_Logo_CMYK_White.png')}
-                                                  alt={'Spotify' +
-                                                          ' badge'}/>
+                                                  alt={'Cosmic Closet Podcast Spotify link.'}/>
                                 </a>
                             </div>
 
