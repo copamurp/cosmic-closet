@@ -5,41 +5,41 @@ import {icon} from '@fortawesome/fontawesome-svg-core/import.macro';
 import SocialLink from "./SocialLink";
 
 const NavWrapper = styled.nav`
+  width: 100%;
+  font-family: 'Kanit', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 2rem;
+  background: radial-gradient(ellipse at top left, #1a1a1a 10%, #0e0e0e 55%);
+  min-height: 10vh;
+
+  .header {
     width: 100%;
-    font-family: 'Kanit', sans-serif;
+    max-width: 1800px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 2rem;
-    background: radial-gradient(ellipse at top left, #1a1a1a 10%, #0e0e0e 55%);
-    min-height: 10vh;
 
-    .header {
-        width: 100%;
-        max-width: 1800px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+    @media only screen and (max-width: 768px) {
+      flex-direction: column;
+      align-items: center;
+    }
 
-        @media only screen and (max-width: 768px) {
-            flex-direction: column;
-            align-items: center;
-        }
+    .header-banner {
+      max-width: 30%;
+      height: auto;
+      margin-top: 2rem;
 
-        .header-banner {
-            max-width: 30%;
-            height: auto;
-            margin-top: 2rem;
+      @media only screen and (max-width: 768px) {
+        max-width: 80%;
+        margin-bottom: 1rem;
+      }
+    }
 
-            @media only screen and (max-width: 768px) {
-                max-width: 80%;
-                margin-bottom: 1rem;
-            }
-        }
-
-        .header-text {
+    .header-text {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -146,11 +146,16 @@ const SpotifyBadge = styled.img`
 `;
 
 const StyledNavLink = styled(NavLink)`
+    font-size: 1.25rem;
   text-decoration: none;
-  font-weight: 200;
+  font-weight: 300;
   color: #ffffff;
   transform: scale(1);
   transition: color 0.2s ease-in-out, transform 0.2s ease-in-out, border 0.2s ease-in-out;
+  
+  @media only screen and (max-width: 768px) {
+    font-size: 1rem;
+  }
 
   :hover {
     color: #5B5AA8;
@@ -160,11 +165,11 @@ const StyledNavLink = styled(NavLink)`
   &.active {
     font-weight: 400;
     color: #5B5AA8;
-    border-bottom: 1px solid #5B5AA8;
+    border-bottom: thin solid #8382ed;
 
     :hover {
       color: #5B5AA8;
-      border-bottom: 1px solid #5B5AA8;
+      border-bottom: thin solid #8382ed;
       transform: scale(1);
     }
   }
