@@ -50,23 +50,8 @@ const NavWrapper = styled.nav`
         padding: 1rem;
       }
 
-      h2, h3 {
+      .mission-statement {
         color: #ffffff;
-      }
-
-      h2 {
-        font-size: 1.5rem;
-        font-size: clamp(1.5rem, 1.35rem + 0.75vw, 2.25rem);
-        font-weight: 600;
-
-        @media only screen and (max-width: 768px) {
-          font-size: 1.25rem;
-          font-size: clamp(1.25rem, 1.125rem + 0.75vw, 1.875rem);
-          text-align: center;
-        }
-      }
-
-      h3 {
         font-size: 1rem;
         font-size: clamp(1rem, 0.9rem + 0.5vw, 1.5rem);
         font-weight: 200;
@@ -75,6 +60,7 @@ const NavWrapper = styled.nav`
           font-size: 0.75rem;
           font-size: clamp(0.75rem, 0.675rem + 0.5vw, 1.125rem);
           text-align: center;
+          font-weight: 300;
         }
       }
     }
