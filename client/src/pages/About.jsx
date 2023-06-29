@@ -21,7 +21,11 @@ const StyledAbout = styled.div`
     justify-content: center;
 
     h1 {
-      color: #5B5AA8;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+      background-image: linear-gradient(to right, #5B5AA8 0%, #4f4ddf 100%);
       margin-bottom: 2rem;
     }
   }
