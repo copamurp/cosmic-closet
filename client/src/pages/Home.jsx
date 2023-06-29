@@ -24,22 +24,29 @@ const StyledHome = styled.div`
   -o-background-size: cover;
   background-size: cover;
 
-  .feed-wrapper {
-    padding: 2rem;
-  }
-
   .intro {
     width: 100%;
     background-color: #0e0e0e;
     box-shadow: 0 -1rem 1rem rgba(0, 0, 0, 0.5) inset;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 1rem 2rem;
+
+    @media only screen and (max-width: 768px) {
+      padding: 1rem;
+    }
 
     > div {
       background-color: transparent;
       width: 100%;
       max-width: 1800px;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
       margin: 2rem auto;
     }
   }
@@ -47,12 +54,16 @@ const StyledHome = styled.div`
   .content {
     width: 100%;
     background-color: transparent;
+    padding: 1rem 2rem;
+    
+    @media only screen and (max-width: 768px) {
+        padding: 1rem;
+    }
 
     > div {
       width: 100%;
       margin: 0 auto;
       max-width: 1800px;
-      padding: 2rem 0;
 
       .socials-intro {
         display: flex;
@@ -60,11 +71,14 @@ const StyledHome = styled.div`
         align-items: center;
         justify-content: center;
         width: 80%;
-        margin: 0 auto;
-        margin-bottom: 4rem;
+        margin: 0 auto 4rem;
 
         > h1 {
-          color: #5B5AA8;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          text-fill-color: transparent;
+          background-image: linear-gradient(to right, #5B5AA8 0%, #4f4ddf 100%);
           margin-bottom: 1rem;
         }
       }
@@ -79,7 +93,7 @@ const StyledHome = styled.div`
 
       @media only screen and (max-width: 768px) {
         width: 100%;
-        margin-bottom: 6rem;
+        margin-bottom: 4rem;
       }
     }
 
@@ -233,6 +247,8 @@ class Home extends React.Component {
             carouselDisabled: false,
             randomError: getRandomError(),
         };
+
+        this.contentRef = React.createRef();
         this.carouselRef = React.createRef();
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
         this.refreshFeeds = this.refreshFeeds.bind(this);
@@ -250,7 +266,7 @@ class Home extends React.Component {
             this.setState({
                 feedWidth: this.state.width > 800
                     ? 800
-                    : this.state.width - 96,
+                    : this.state.width - 64,
                 feedHeight: this.state.height * 0.2,
             });
         });
@@ -351,9 +367,13 @@ class Home extends React.Component {
                     screenName: 'Cosmic_Closet',
                 }}
                 options={{
-                    height: this.state.feedHeight > 500
-                        ? this.state.feedHeight
-                        : 500,
+                    height: this.state.width > 768 ?
+                        this.state.feedHeight > 400
+                            ? this.state.feedHeight
+                            : 400
+                        : this.state.feedHeight > 300
+                            ? this.state.feedHeight
+                            : 300,
                     width: this.state.feedWidth,
                     theme: 'dark',
                 }}
@@ -361,9 +381,13 @@ class Home extends React.Component {
             youtube: <YouTube
                 videoId="heqAQT3o1DI"
                 opts={{
-                    height: this.state.feedHeight > 400
-                        ? this.state.feedHeight
-                        : 400,
+                    height: this.state.width > 768 ?
+                        this.state.feedHeight > 400
+                            ? this.state.feedHeight
+                            : 400
+                        : this.state.feedHeight > 250
+                            ? this.state.feedHeight
+                            : 250,
                     width: this.state.feedWidth < 800
                         ? this.state.feedWidth
                         : 800,
@@ -437,108 +461,115 @@ class Home extends React.Component {
 
         return (
             <StyledHome>
-            <div className={'intro feed-wrapper'}>
-                <div>
-                    <ExternalMediaWrapper media={youtubeFeed}
-                                          label={'Latest Episode'}
-                                          colorScheme={'white'}/>
-                </div>
-            </div>
-
-            <div className={'content'}>
-                <div>
-                    <div className={'socials-intro'}>
-                        <h1>Find us on your favorite podcast
-                            platform</h1>
-                        <p>
-                            From the paranormal to conspiracy theories,
-                            we have new episodes every week! Our goal is
-                            to
-                            open the door of the cosmos and explore the
-                            many aspects of our universe, both seen and
-                            unseen.
-                            We have interviewed Anti-Vaxxers,
-                            demonologists, space funding CEOs, Flat
-                            Earth believers,
-                            and
-                            heads of micronations. Below are the
-                            platforms we are currently on, subscribe and
-                            follow us!
-                        </p>
-                    </div>
-
-                    <div className={'socials-big'}>
-                        <SocialLink icon={icon({
-                            name: 'youtube',
-                            style: 'brands',
-                        })}
-                                    link={'https://www.youtube.com/@CosmicCloset'}
-                                    size={'4x'} color={'#FF0000'}
-                        />
-                        <SocialLink icon={icon({
-                            name: 'twitter',
-                            style: 'brands',
-                        })}
-                                    link={'https://twitter.com/cosmic_closet?lang=en'}
-                                    size={'4x'} color={'#1DA1F2'}
-                        />
-                        <SocialLink icon={icon({
-                            name: 'instagram',
-                            style: 'brands',
-                        })}
-                                    link={'https://www.instagram.com/cosmicclosetpodcast/?hl=en'}
-                                    size={'4x'} color={'white'}
-                        />
-                        <SocialLink icon={icon({
-                            name: 'podcast',
-                            style: 'regular',
-                            family: 'sharp',
-                        })}
-                                    link={'https://podcasts.apple.com/us/podcast/cosmic-closet-podcast/id1465437814?ign-mpt=uo%3D4'}
-                                    size={'4x'} color={'#833AB4'}
-                        />
-                    </div>
-
+                <div className={'intro'}>
                     <div className={'feed-wrapper'}>
-                        <ExternalMediaWrapper media={tweetFeed}
-                                              label={'Connect On Twitter'}
+                        <ExternalMediaWrapper media={youtubeFeed}
+                                              label={'Latest Episode'}
                                               colorScheme={'white'}/>
                     </div>
-                </div>
-            </div>
 
-            <div className={'testimonials'}>
-                <h1>Testimonials</h1>
-
-                <div className={'testimonials-wrapper'}>
-                    <button disabled={this.state.carouselDisabled}
-                            className={'carousel-button-prev'}
-                            onClick={() => {
-                                this.carouselRef.current.prevSlide()
-                            }}>
+                    {this.state.width < 768 &&
                         <FontAwesomeIcon icon={icon({
-                            name: 'chevron-left',
+                            name: 'angle-down',
                             style: 'solid',
-                        })} size={'2x'}/>
-                    </button>
+                        })} beat size={'2x'} className={'arrow'} onClick={() => this.contentRef.current.scrollIntoView()}/>
+                    }
+                </div>
 
-                    <div className={'carousel-wrapper'}>
-                        {carousel}
+                <div className={'content'}>
+                    <div>
+                        <div ref={this.contentRef} className={'socials-intro'}>
+                            <h1>Find us on your favorite podcast
+                                platform</h1>
+                            <p>
+                                From the paranormal to conspiracy theories,
+                                we have new episodes every week! Our goal is
+                                to
+                                open the door of the cosmos and explore the
+                                many aspects of our universe, both seen and
+                                unseen.
+                                We have interviewed Anti-Vaxxers,
+                                demonologists, space funding CEOs, Flat
+                                Earth believers,
+                                and
+                                heads of micronations. Below are the
+                                platforms we are currently on, subscribe and
+                                follow us!
+                            </p>
+                        </div>
+
+                        <div className={'socials-big'}>
+                            <SocialLink icon={icon({
+                                name: 'youtube',
+                                style: 'brands',
+                            })}
+                                        link={'https://www.youtube.com/@CosmicCloset'}
+                                        size={'4x'} color={'#FF0000'}
+                            />
+                            <SocialLink icon={icon({
+                                name: 'twitter',
+                                style: 'brands',
+                            })}
+                                        link={'https://twitter.com/cosmic_closet?lang=en'}
+                                        size={'4x'} color={'#1DA1F2'}
+                            />
+                            <SocialLink icon={icon({
+                                name: 'instagram',
+                                style: 'brands',
+                            })}
+                                        link={'https://www.instagram.com/cosmicclosetpodcast/?hl=en'}
+                                        size={'4x'} color={'white'}
+                            />
+                            <SocialLink icon={icon({
+                                name: 'podcast',
+                                style: 'regular',
+                                family: 'sharp',
+                            })}
+                                        link={'https://podcasts.apple.com/us/podcast/cosmic-closet-podcast/id1465437814?ign-mpt=uo%3D4'}
+                                        size={'4x'} color={'#833AB4'}
+                            />
+                        </div>
+
+                        <div className={'feed-wrapper'}>
+                            <ExternalMediaWrapper media={tweetFeed}
+                                                  label={'Follow On Twitter'}
+                                                  colorScheme={'white'}/>
+                        </div>
                     </div>
-
-                    <button className={'carousel-button-next'}
-                            disabled={this.state.carouselDisabled}
-                            onClick={() => {
-                                this.carouselRef.current.nextSlide()
-                            }}>
-                        <FontAwesomeIcon icon={icon({
-                            name: 'chevron-right',
-                            style: 'solid',
-                        })} size={'2x'}/>
-                    </button>
                 </div>
-            </div>
-        </StyledHome>)
+
+                <div className={'testimonials'}>
+                    <h1>Testimonials</h1>
+
+                    <div className={'testimonials-wrapper'}>
+                        <button disabled={this.state.carouselDisabled}
+                                className={'carousel-button-prev'}
+                                onClick={() => {
+                                    this.carouselRef.current.prevSlide()
+                                }}>
+                            <FontAwesomeIcon icon={icon({
+                                name: 'chevron-left',
+                                style: 'solid',
+                            })} size={'2x'}/>
+                        </button>
+
+                        <div className={'carousel-wrapper'}>
+                            {carousel}
+                        </div>
+
+                        <button className={'carousel-button-next'}
+                                disabled={this.state.carouselDisabled}
+                                onClick={() => {
+                                    this.carouselRef.current.nextSlide()
+                                }}>
+                            <FontAwesomeIcon icon={icon({
+                                name: 'chevron-right',
+                                style: 'solid',
+                            })} size={'2x'}/>
+                        </button>
+                    </div>
+                </div>
+            </StyledHome>)
     }
 }
 
