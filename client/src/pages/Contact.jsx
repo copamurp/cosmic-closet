@@ -47,7 +47,7 @@ const StyledContact = styled.div`
       display: flex;
       flex-direction: column;
       align-items: stretch;
-        justify-content: space-evenly;
+      justify-content: space-evenly;
 
       @media only screen and (max-width: 768px) {
         margin: 0 auto;
@@ -133,6 +133,7 @@ const StyledFormControl = styled.div`
 
     @media only screen and (max-width: 768px) {
       font-size: 1rem;
+      font-weight: 300;
     }
   }
 

@@ -103,6 +103,7 @@ const StyledHome = styled.div`
       display: flex;
       align-items: stretch;
       justify-content: space-evenly;
+      margin-bottom: 1rem;
 
       @media only screen and (max-width: 1100px) {
         flex-direction: column;
@@ -468,12 +469,10 @@ class Home extends React.Component {
                                               colorScheme={'white'}/>
                     </div>
 
-                    {this.state.width < 768 &&
-                        <FontAwesomeIcon icon={icon({
-                            name: 'angle-down',
-                            style: 'solid',
-                        })} beat size={'2x'} className={'arrow'} onClick={() => this.contentRef.current.scrollIntoView()}/>
-                    }
+                    <FontAwesomeIcon icon={icon({
+                        name: 'angle-down',
+                        style: 'solid',
+                    })} beat size={'2x'} className={'arrow'} onClick={() => this.contentRef.current.scrollIntoView()}/>
                 </div>
 
                 <div className={'content'}>

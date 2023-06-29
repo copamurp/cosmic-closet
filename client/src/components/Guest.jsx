@@ -45,9 +45,14 @@ const StyledWrapper = styled.div`
 
 const StyledName = styled.p`
   font-size: ${(props) => props.$isHovered ? '1.65rem' : '1.5rem'};
-  font-weight: 200;
+  font-weight: 300;
   transition: color 0.5s ease-in-out, font-size 0.5s ease-in-out;
-  color: #7270ea;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  background-image: linear-gradient(to right, #5B5AA8 0%, #4f4ddf 100%);
+    margin-top: 0.5rem;
 `;
 
 const StyledPlaceholderIcon = styled(FontAwesomeIcon)`

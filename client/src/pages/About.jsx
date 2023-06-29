@@ -13,6 +13,18 @@ const StyledAbout = styled.div`
   padding-top: 4rem;
   background: radial-gradient(circle at top right, #1a1a1a 5%, #101010 75%);
   box-shadow: 0 0 2rem rgba(0, 0, 0, 0.5) inset;
+  
+  hr {
+    width: 20%;
+    min-width: 100px;
+    max-width: 200px;
+    height: 5px;
+    border: #4f4ddf solid 1px;
+    border-radius: 5px;
+    background-image: linear-gradient(to right, #5B5AA8 0%, #4f4ddf 100%);
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+    margin: 2rem auto;
+  }
 
   .about-intro {
     display: flex;
@@ -26,7 +38,6 @@ const StyledAbout = styled.div`
       background-clip: text;
       text-fill-color: transparent;
       background-image: linear-gradient(to right, #5B5AA8 0%, #4f4ddf 100%);
-      margin-bottom: 2rem;
     }
   }
 
@@ -115,6 +126,7 @@ class About extends React.Component {
                     <div className={'about-intro'}>
                         <h1>The Cosmic Closet Podcast Lore</h1>
                     </div>
+                    <hr/>
                     <div className={'about-content'}>
                         <p>
                             The Cosmic Closet Podcast was founded on February
