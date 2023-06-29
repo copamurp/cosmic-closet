@@ -36,6 +36,12 @@ p {
     line-height: 1.5;
 }
 
+@media only screen and (max-width: 768px) {
+    p {
+        font-weight: 300;
+    }
+}
+
 .App {
     background-color: #0e0e0e;
     color: #ffffff;
