@@ -35,7 +35,6 @@ class Carousel extends React.Component {
     }
 
     nextSlide = () => {
-        console.log('next slide')
         let curIndex = this.state.activeIndex;
 
         if (this.state.activeIndex < this.props.items.length - 1) {
@@ -46,7 +45,6 @@ class Carousel extends React.Component {
     }
 
     prevSlide = () => {
-        console.log('prev slide')
         let curIndex = this.state.activeIndex;
 
         if (this.state.activeIndex > 0) {
