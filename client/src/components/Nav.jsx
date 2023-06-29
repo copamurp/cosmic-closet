@@ -158,17 +158,26 @@ const StyledNavLink = styled(NavLink)`
   }
 
   :hover {
-    color: #5B5AA8;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-image: linear-gradient(to right, #5B5AA8 0%, #4f4ddf 100%);
     transform: scale(1.1);
   }
 
   &.active {
     font-weight: 400;
-    color: #5B5AA8;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-image: linear-gradient(to right, #5B5AA8 0%, #4f4ddf 100%);
     border-bottom: thin solid #8382ed;
 
     :hover {
-      color: #5B5AA8;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      background-image: linear-gradient(to right, #5B5AA8 0%, #4f4ddf 100%);
       border-bottom: thin solid #8382ed;
       transform: scale(1);
     }
@@ -179,7 +188,7 @@ class Nav extends React.Component {
     render() {
         return (
                 <NavWrapper>
-                    <div className={'header'}>
+                    <div className={'header'} ref={this.props.viewportRef}>
                         <img className={'header-banner'}
                              src={require('../assets/images/banner.webp')}
                              alt={'Cosmic Closet Podcast.'}/>
