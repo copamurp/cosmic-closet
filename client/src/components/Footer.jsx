@@ -111,7 +111,7 @@ class Footer extends React.Component {
     render() {
         return (
                 <StyledFooter>
-                    <div className={'link-wrapper'}>
+                    <div className={'link-wrapper'} ref={this.props.viewportRef}>
                         <div className={'site-links'}>
                             <button
                                     onClick={() => {
